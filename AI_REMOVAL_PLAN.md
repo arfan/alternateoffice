@@ -2,7 +2,7 @@
 
 This repository is currently an Electron monorepo with six editor applications
 (`docs`, `sheets`, `slides`, `pdf`, `markdown`, and `html`) plus the `shell` and
-the deterministic `@genoffice/cli` package. It uses npm workspaces and a
+the deterministic `@alternateoffice/cli` package. It uses npm workspaces and a
 checked-in `package-lock.json`.
 
 ## Audit summary
@@ -101,7 +101,7 @@ flowchart TD
 
 - Package manager: npm workspaces; lockfile: `package-lock.json`.
 - `node_modules` was initially absent. `npm run typecheck` therefore stopped
-  in `@genoffice/i18n` with missing `vitest`/`vitest/config` declarations.
+  in `@alternateoffice/i18n` with missing `vitest`/`vitest/config` declarations.
 - `npm install` was attempted from the lockfile. It did not complete because
   Windows returned `EPERM` while npm was creating nested Electron dependency
   directories (`node_modules/app-builder-lib/node_modules/@electron`). The

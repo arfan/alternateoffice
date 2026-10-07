@@ -25,11 +25,11 @@ import {
   type ImageSearchResult,
   type WebSearchResult,
 } from './shared'
-import { genofficeApiKey, genofficeAuthPath, reloadGenofficeAuth } from './genoffice-auth'
-// deep import: the package root re-exports Electron-bound modules, and this file also runs in the genoffice CLI
-import { readBodyCapped } from '@genoffice/electron-utils/remote-image'
-import { createStreamWatchdog } from '@genoffice/ai-provider'
-import { fetchWithSsrfGuard } from '@genoffice/electron-utils/safe-remote-url'
+import { alternateofficeApiKey, alternateofficeAuthPath, reloadGenofficeAuth } from './alternateoffice-auth'
+// deep import: the package root re-exports Electron-bound modules, and this file also runs in the alternateoffice CLI
+import { readBodyCapped } from '@alternateoffice/electron-utils/remote-image'
+import { createStreamWatchdog } from '@alternateoffice/ai-provider'
+import { fetchWithSsrfGuard } from '@alternateoffice/electron-utils/safe-remote-url'
 
 const SEARCH_TIMEOUT_MS = 60_000
 const GENERATE_TIMEOUT_MS = 600_000
@@ -84,12 +84,12 @@ function electronCompatArgs(): string[] {
 
 /**
  * API key for Genspark LLM proxy / tool_cli auth; '' when not logged in.
- * Priority: GSK_API_KEY env → GenOffice's own key (bills to us via its
+ * Priority: GSK_API_KEY env → AlternateOffice's own key (bills to us via its
  * key_name) → shared gsk CLI login (bills to the Claw bucket).
  */
 export function gskApiKey(): string {
   if (process.env.GSK_API_KEY) return process.env.GSK_API_KEY
-  const own = genofficeApiKey()
+  const own = alternateofficeApiKey()
   if (own) return own
   try {
     const configPath = join(homedir(), '.genspark-tool-cli', 'config.json')
@@ -102,7 +102,7 @@ export function gskApiKey(): string {
 }
 
 /**
- * Fires when the effective gsk key changes on disk — another GenOffice-family
+ * Fires when the effective gsk key changes on disk — another AlternateOffice-family
  * app re-logging in mints a new key and revokes the one this process holds.
  * Polls by path (watchFile): auth.json is replaced whole, and fs.watch misses
  * events for a moment after it is armed.
@@ -116,7 +116,7 @@ export function watchGskApiKey(onChange: (key: string) => void, intervalMs = 200
     last = key
     onChange(key)
   }
-  const files = [genofficeAuthPath(), join(homedir(), '.genspark-tool-cli', 'config.json')]
+  const files = [alternateofficeAuthPath(), join(homedir(), '.genspark-tool-cli', 'config.json')]
   for (const f of files) watchFile(f, { persistent: false, interval: intervalMs }, check)
   return () => {
     for (const f of files) unwatchFile(f, check)
@@ -564,11 +564,11 @@ async function toolCliPost(
   return watchdog.guard(async () => {
     const resp = await fetch(`${GSK_TOOL_CLI_BASE}${path}`, {
       method: 'POST',
-      // X-Agent-Type splits GenOffice usage out of the proxy's "Claw" billing bucket
+      // X-Agent-Type splits AlternateOffice usage out of the proxy's "Claw" billing bucket
       headers: {
         'X-Api-Key': key,
         'Content-Type': 'application/json',
-        'X-Agent-Type': 'genoffice',
+        'X-Agent-Type': 'alternateoffice',
       },
       body: JSON.stringify(body),
       signal: watchdog.signal,

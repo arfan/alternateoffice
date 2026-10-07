@@ -1,6 +1,6 @@
 {
-  "name": "@genoffice/slides",
-  "productName": "GenOffice Slides",
+  "name": "@alternateoffice/slides",
+  "productName": "AlternateOffice Slides",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "private": true,
@@ -18,16 +18,16 @@
     "dist:dir": "electron-vite build && electron-builder --dir"
   },
   "devDependencies": {
-    "@genoffice/agent-core": "*",
-    "@genoffice/ai-provider": "*",
-    "@genoffice/ai-search": "*",
-    "@genoffice/file-parse": "*",
-    "@genoffice/i18n": "*",
-    "@genoffice/pptx-engine": "*",
-    "@genoffice/pptx-ops": "*",
-    "@genoffice/pptx-render": "*",
-    "@genoffice/project-store": "*",
-    "@genoffice/ui": "*",
+    "@alternateoffice/agent-core": "*",
+    "@alternateoffice/ai-provider": "*",
+    "@alternateoffice/ai-search": "*",
+    "@alternateoffice/file-parse": "*",
+    "@alternateoffice/i18n": "*",
+    "@alternateoffice/pptx-engine": "*",
+    "@alternateoffice/pptx-ops": "*",
+    "@alternateoffice/pptx-render": "*",
+    "@alternateoffice/project-store": "*",
+    "@alternateoffice/ui": "*",
     "@types/opentype.js": "^1.3.8",
     "@types/pngjs": "^6.0.5",
     "@types/react": "^19.2.14",
@@ -48,8 +48,8 @@
   },
   "author": "GenOffice",
   "build": {
-    "appId": "com.genoffice.slides",
-    "productName": "GenOffice Slides",
+    "appId": "com.alternateoffice.slides",
+    "productName": "AlternateOffice Slides",
     "electronVersion": "43.3.0",
     "directories": {
       "output": "release"
@@ -88,7 +88,7 @@
     }
   },
   "dependencies": {
-    "@genoffice/electron-utils": "*",
+    "@alternateoffice/electron-utils": "*",
     "acorn": "^8.18.0",
     "harfbuzzjs": "^1.4.0",
     "pngjs": "^7.0.0",

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.genoffice.app</id>
+  <id>com.alternateoffice.app</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>Apache-2.0</project_license>
-  <name>GenOffice</name>
+  <name>AlternateOffice</name>
   <summary>AI-native office suite — Word, Excel, PowerPoint, PDF and Markdown in one app</summary>
   <description>
     <p>
-      GenOffice is a unified, AI-native office suite. One local app hosts the
+      AlternateOffice is a unified, AI-native office suite. One local app hosts the
       word processor, spreadsheet, presentation and PDF modules behind a home
       launcher, reads and writes the standard Office file formats, and puts an
       AI copilot beside every editor.
@@ -24,7 +24,7 @@
   <developer id="ai.genspark">
     <name>Mainfunc, Inc.</name>
   </developer>
-  <launchable type="desktop-id">com.genoffice.app.desktop</launchable>
+  <launchable type="desktop-id">com.alternateoffice.app.desktop</launchable>
   <url type="homepage">https://github.com/genspark-ai/genoffice</url>
   <url type="bugtracker">https://github.com/genspark-ai/genoffice/issues</url>
   <content_rating type="oars-1.1" />

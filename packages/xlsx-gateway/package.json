@@ -1,10 +1,10 @@
 {
-  "name": "@genoffice/xlsx-gateway",
+  "name": "@alternateoffice/xlsx-gateway",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
-  "description": "xlsx write gateway and workbook domain logic (OOXML patching, CSV import, workbook DSL, pivots, charts) shared by the sheets app and the genoffice CLI; no Electron, no Univer",
+  "description": "xlsx write gateway and workbook domain logic (OOXML patching, CSV import, workbook DSL, pivots, charts) shared by the sheets app and the alternateoffice CLI; no Electron, no Univer",
   "exports": {
     "./*": "./src/*.ts"
   },

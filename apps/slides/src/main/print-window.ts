@@ -25,7 +25,7 @@ export async function printSlidesHtml(
 ): Promise<{ ok: boolean; error?: string }> {
   let tempDir: string | null = null
   try {
-    tempDir = await mkdtemp(join(tmpdir(), 'genoffice-slides-print-'))
+    tempDir = await mkdtemp(join(tmpdir(), 'alternateoffice-slides-print-'))
     const htmlPath = join(tempDir, 'slides.html')
     await writeFile(htmlPath, html, 'utf8')
     await win.loadFile(htmlPath)

@@ -12,7 +12,7 @@
  * Pure and Node-testable: input is the render tree (absolute px boxes), output
  * is plain JSON (what ai:save-style-template stores) or prompt text.
  */
-import type { RenderNode, RenderSlide, ShapeRenderNode } from '@genoffice/pptx-render'
+import type { RenderNode, RenderSlide, ShapeRenderNode } from '@alternateoffice/pptx-render'
 
 export type SkeletonRole = 'cover' | 'content' | 'closing'
 

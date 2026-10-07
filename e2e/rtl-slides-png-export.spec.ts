@@ -44,7 +44,7 @@ interface Run {
 
 /** One deck, one language: the PNG bytes a selection copy puts on the clipboard. */
 async function run(lang: string): Promise<Run> {
-  const dir = await mkdtemp(join(tmpdir(), `genoffice-rtl-png-${lang}-`))
+  const dir = await mkdtemp(join(tmpdir(), `alternateoffice-rtl-png-${lang}-`))
   try {
     const fixture = join(dir, 'fixture')
     await cp(resolve('e2e/assets/font-manager-rubik'), fixture, { recursive: true })
@@ -64,7 +64,7 @@ async function run(lang: string): Promise<Run> {
         resolve('apps/slides'),
         pptx,
       ],
-      env: { ...env, GENOFFICE_USER_DATA: join(dir, 'user-data'), GENOFFICE_LANG: lang },
+      env: { ...env, ALTERNATEOFFICE_USER_DATA: join(dir, 'user-data'), ALTERNATEOFFICE_LANG: lang },
     })
     try {
       const page = await app.firstWindow()

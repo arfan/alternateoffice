@@ -1,4 +1,4 @@
-import type { AiPanelPrefs } from '@genoffice/ui'
+import type { AiPanelPrefs } from '@alternateoffice/ui'
 /**
  * slides main-process <-> renderer IPC contract (Phase 3: open/save/edit, AI not included yet).
  *
@@ -8,18 +8,18 @@ import type { AiPanelPrefs } from '@genoffice/ui'
  * renderer sends edit intents (text/geometry changes) back to the main process, which applies
  * them to the model and rebuilds the RenderSlide.
  */
-import type { RenderSlide } from '@genoffice/pptx-render'
-import type { CustGeomPathCmd, SlideComment, SectionInfo } from '@genoffice/pptx-engine'
-import type { FontSizeStep } from '@genoffice/pptx-ops/font-size'
+import type { RenderSlide } from '@alternateoffice/pptx-render'
+import type { CustGeomPathCmd, SlideComment, SectionInfo } from '@alternateoffice/pptx-engine'
+import type { FontSizeStep } from '@alternateoffice/pptx-ops/font-size'
 // the font catalog's shape is the store's to declare, not a copy kept in step by hand
-import type { CatalogEntry as FontCatalogEntry } from '@genoffice/electron-utils/font-store'
+import type { CatalogEntry as FontCatalogEntry } from '@alternateoffice/electron-utils/font-store'
 import type { LayoutSkeleton } from '../renderer/ai/layout-skeleton'
 import type {
   AiSettings,
   AiStreamChunk,
   AiStreamRequest,
   GenSparkAccountStatus,
-} from '@genoffice/ai-provider'
+} from '@alternateoffice/ai-provider'
 
 import type {
   EditRun,
@@ -29,7 +29,7 @@ import type {
   ScriptEditOp,
   ApplyEditScriptOp,
   LinkTargetOp,
-} from '@genoffice/pptx-ops'
+} from '@alternateoffice/pptx-ops'
 
 // edit payload types moved to the op package; re-exported so IPC consumers keep one import site
 export type {
@@ -42,9 +42,9 @@ export type {
   LinkTargetOp,
 }
 
-export type { SlideComment, SectionInfo } from '@genoffice/pptx-engine'
+export type { SlideComment, SectionInfo } from '@alternateoffice/pptx-engine'
 
-// Canonical definitions of AI-related types live in @genoffice/ai-provider / @genoffice/agent-core (shared with docs)
+// Canonical definitions of AI-related types live in @alternateoffice/ai-provider / @alternateoffice/agent-core (shared with docs)
 export type {
   AiProviderConfig,
   AiProviderId,
@@ -53,9 +53,9 @@ export type {
   AiStreamChunk,
   AiStreamRequest,
   GenSparkAccountStatus,
-} from '@genoffice/ai-provider'
-export { AI_PROVIDERS } from '@genoffice/ai-provider/browser'
-export type { AgentToolCall, AgentToolDef } from '@genoffice/agent-core'
+} from '@alternateoffice/ai-provider'
+export { AI_PROVIDERS } from '@alternateoffice/ai-provider/browser'
+export type { AgentToolCall, AgentToolDef } from '@alternateoffice/agent-core'
 
 export type UiTheme = 'light' | 'dark' | 'system'
 
@@ -1351,7 +1351,7 @@ export interface SlidesApi {
       })
     | { error: string }
   >
-  /** Whether cloud single-page generation (gsk slide_generate) is available (GENOFFICE_CLOUD_SLIDE=1 + gsk login) */
+  /** Whether cloud single-page generation (gsk slide_generate) is available (ALTERNATEOFFICE_CLOUD_SLIDE=1 + gsk login) */
   cloudGenStatus: () => Promise<{ enabled: boolean }>
   /** Abort every in-flight cloud page generation of this window (AI panel stop) */
   cloudPageCancel: () => Promise<void>

@@ -6,7 +6,7 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest'
 
-import type { PlacedBox, RenderSlide } from '@genoffice/pptx-render'
+import type { PlacedBox, RenderSlide } from '@alternateoffice/pptx-render'
 
 import {
   extractLayoutSkeleton,

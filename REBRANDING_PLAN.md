@@ -1,27 +1,23 @@
-# Rebranding plan
+# AlternateOffice rebranding
 
-This migration deliberately does not rename internal `@genoffice/*` package
-names. Keeping those names stable reduces merge risk while the Office engines
-are decoupled from AI.
+The product is now AlternateOffice. Workspace names/imports use
+`@alternateoffice/*`; the CLI and installer executable use `alternateoffice`.
+Source filenames, packaging manifests, build scripts, tests and documentation
+have been updated together. The repository checkout directory is unchanged.
 
-## Inventory
+## Deliberately retained references
 
-- Visible product and repository branding: `GenOffice` / `genspark-ai/genoffice`.
-- Package scope and workspace names: `@genoffice/*`.
-- Repository and release URLs: GitHub `genspark-ai/genoffice` and
-  `genoffice.ai` references in documentation and product copy.
-- Electron titles, bundle identifiers, executable names, icons, and updater
-  identifiers are under `apps/shell`, `packaging`, and the app manifests.
-- README translations and screenshots contain extensive AI-era product copy.
+- Upstream URLs, license notices, copyright and author attribution still identify
+  the original GenOffice project. No replacement hosting or release endpoint was supplied.
+- Electron profiles remain in `GenOffice` / `GenOffice Dev`, and hidden `.genoffice`
+  storage paths remain compatible. `ALTERNATEOFFICE_USER_DATA` overrides the profile;
+  the previous `GENOFFICE_USER_DATA` override is also accepted by the shell and CLI.
+- Bundled font names and filenames remain unchanged for document compatibility.
+- Existing binary screenshots and artwork have not been redrawn.
+- Docker, Flatpak and Nix recipes still wrap upstream release binaries. Their
+  upstream runtime paths remain intact; these wrappers do not yet distribute
+  this fork. Use the source build / Electron packaging for AlternateOffice.
 
-## Later rename sequence
-
-1. Choose the replacement product name, reverse-DNS application id, executable
-   name, and update channel identifiers.
-2. Change visible UI strings, docs, websites, icons, and release metadata.
-3. Change package scope/imports in one mechanical, reviewed migration.
-4. Update Electron bundle ids, installer metadata, updater endpoints, and CI.
-5. Regenerate notices and run all packaging/build checks.
-
-The current work should only remove AI branding from active UI/configuration;
-it should not perform this global rename.
+Build-time configuration uses the `ALTERNATEOFFICE_` environment prefix.
+Deployments must configure their own release endpoints and secrets under that prefix.
+Upstream repository links describe provenance, not an AlternateOffice release service.

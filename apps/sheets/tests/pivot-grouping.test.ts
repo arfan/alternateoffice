@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { groupValue } from '@genoffice/xlsx-gateway/domain/pivot-grouping'
+import { groupValue } from '@alternateoffice/xlsx-gateway/domain/pivot-grouping'
 import {
   growPivotDefinition,
   recomputePivotData,
-} from '@genoffice/xlsx-gateway/domain/pivot-engine'
-import { parsePivotDefinition } from '@genoffice/xlsx-gateway/gateway/xlsx-pivot'
+} from '@alternateoffice/xlsx-gateway/domain/pivot-engine'
+import { parsePivotDefinition } from '@alternateoffice/xlsx-gateway/gateway/xlsx-pivot'
 
 describe('groupValue', () => {
   it('groups dates by year / quarter / month from ISO strings', () => {

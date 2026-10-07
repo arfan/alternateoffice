@@ -14,8 +14,8 @@ import {
   MAX_TOOL_CLI_NDJSON_BYTES,
   summarizeGskFailure,
 } from '../src/gsk'
-import { ResponseTooLargeError } from '@genoffice/electron-utils/remote-image'
-import { AiTimeoutError } from '@genoffice/ai-provider'
+import { ResponseTooLargeError } from '@alternateoffice/electron-utils/remote-image'
+import { AiTimeoutError } from '@alternateoffice/ai-provider'
 
 describe('parseGskOutput', () => {
   it('parses clean JSON', () => {

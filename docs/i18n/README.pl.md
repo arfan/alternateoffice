@@ -2,12 +2,12 @@
   <a href="https://genoffice.ai/">
     <picture>
       <source srcset="../assets/readme/hero-dark.webp" media="(prefers-color-scheme: dark)">
-      <img src="../assets/readme/hero.webp" alt="GenOffice — otwarty pakiet biurowy AI: Docs, Sheets, Slides, PDF, Markdown i HTML z wbudowanym panelem AI" width="100%">
+      <img src="../assets/readme/hero.webp" alt="AlternateOffice — otwarty pakiet biurowy AI: Docs, Sheets, Slides, PDF, Markdown i HTML z wbudowanym panelem AI" width="100%">
     </picture>
   </a>
 </p>
 
-<h1 align="center">GenOffice</h1>
+<h1 align="center">AlternateOffice</h1>
 
 <p align="center"><b>Pierwszy na świecie w pełni funkcjonalny otwarty pakiet biurowy z AI.</b><br>
 Pliki Word, Excel, PowerPoint i PDF, edytowane przez Ciebie i Twoją AI, zapisywane z powrotem w prawdziwych formatach.</p>
@@ -30,7 +30,7 @@ Pliki Word, Excel, PowerPoint i PDF, edytowane przez Ciebie i Twoją AI, zapisyw
   <a href="../../PRIVACY.md"><b>Prywatność</b></a>
 </p>
 
-GenOffice to darmowa, otwarta alternatywa dla Microsoft Office na macOS,
+AlternateOffice to darmowa, otwarta alternatywa dla Microsoft Office na macOS,
 Windows i Linux. Otwiera i zapisuje natywne pliki `.docx`, `.xlsx` i `.pptx`,
 edytuje PDF, Markdown i HTML, a przy każdym dokumencie stawia agenta AI — nie
 jest to czat dopięty z boku, lecz edytor, który czyta plik, wprowadza zmianę
@@ -53,7 +53,7 @@ i pokazuje precyzyjnie, czego dotknął.
   Doubao, MiniMax, Grok, Mistral, OpenRouter, Requesty lub dowolnego endpointu
   zgodnego z OpenAI, w tym lokalnych serwerów.
 - **Skryptowalne i gotowe na agentów.** Aplikacja dostarcza wiersz poleceń
-  `genoffice` oraz skill dla agentów Claude Code, Codex, Cursor, Gemini CLI,
+  `alternateoffice` oraz skill dla agentów Claude Code, Codex, Cursor, Gemini CLI,
   GitHub Copilot, OpenCode i Windsurf, dzięki czemu agent kodujący może
   tworzyć, konwertować, czytać i edytować prawdziwe pliki Office na Twoim
   komputerze bez otwierania okna.
@@ -73,8 +73,8 @@ AI jest prowadzona promptem widocznym w panelu.
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/docs-report.webp" alt="GenOffice Docs renderuje dwukolumnową stronę raportu rocznego z pełnowymiarowym zdjęciem na okładce, zacienioną tabelą KPI, nagłówkiem i stopką, przy powiększeniu 80% ze zwiniętym panelem AI"></td>
-<td width="50%"><img src="../assets/readme/docs-ai.webp" alt="GenOffice Docs: przegląd firmy z obrazem w formie banera; AI skróciła sekcję Overview i wstawiła nową sekcję z punktami, a panel proponuje jednokrotne przywrócenie"></td>
+<td width="50%"><img src="../assets/readme/docs-report.webp" alt="AlternateOffice Docs renderuje dwukolumnową stronę raportu rocznego z pełnowymiarowym zdjęciem na okładce, zacienioną tabelą KPI, nagłówkiem i stopką, przy powiększeniu 80% ze zwiniętym panelem AI"></td>
+<td width="50%"><img src="../assets/readme/docs-ai.webp" alt="AlternateOffice Docs: przegląd firmy z obrazem w formie banera; AI skróciła sekcję Overview i wstawiła nową sekcję z punktami, a panel proponuje jednokrotne przywrócenie"></td>
 </tr>
 <tr>
 <td><b>Otwiera plik tak, jak układa go Word</b> — dwukolumnowe sekcje, obrazy na całą szerokość, zacienione tabele, nagłówki i stopki, paginacja według metryk linii Worda. Style, komentarze, śledzone zmiany, równania i pismo odręczne wracają bez zmian.</td>
@@ -86,8 +86,8 @@ AI jest prowadzona promptem widocznym w panelu.
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/sheets-ai.webp" alt="GenOffice Sheets: AI dodała arkusz Summary z przychodami według regionu i kategorii przy użyciu formuł SUMIF, plus wykres kolumnowy, i zgłasza 43 zastosowane zmiany z przyciskiem Undo"></td>
-<td width="50%"><img src="../assets/readme/sheets-qa.webp" alt="GenOffice Sheets: na pytanie, który region przewodził w przychodach za Q2, AI odpowiada Europa z podziałem na kategorie i podaje jako klikalne odnośniki komórki, z których skorzystała, obok arkusza Orders"></td>
+<td width="50%"><img src="../assets/readme/sheets-ai.webp" alt="AlternateOffice Sheets: AI dodała arkusz Summary z przychodami według regionu i kategorii przy użyciu formuł SUMIF, plus wykres kolumnowy, i zgłasza 43 zastosowane zmiany z przyciskiem Undo"></td>
+<td width="50%"><img src="../assets/readme/sheets-qa.webp" alt="AlternateOffice Sheets: na pytanie, który region przewodził w przychodach za Q2, AI odpowiada Europa z podziałem na kategorie i podaje jako klikalne odnośniki komórki, z których skorzystała, obok arkusza Orders"></td>
 </tr>
 <tr>
 <td><b>Zbuduj to</b> — z jednego zdania agent dodaje arkusz Summary z prawdziwymi formułami <code>SUMIF</code> według regionu i kategorii, wstawia wykres kolumnowy i stosuje 43 zmiany jako jedną grupę do wycofania.</td>
@@ -97,15 +97,15 @@ AI jest prowadzona promptem widocznym w panelu.
 
 ### 3 · Slides — od promptu do prezentacji `.pptx`
 
-<img src="../assets/readme/slides-generate.webp" alt="Timelapse GenOffice Slides generującego prezentację inwestorską Aurora Home: AI planuje fabułę w panelu, slajdy pojawiają się na płótnie jeden po drugim, a gotowa prezentacja kończy się finałowym wezwaniem do działania" width="100%">
+<img src="../assets/readme/slides-generate.webp" alt="Timelapse AlternateOffice Slides generującego prezentację inwestorską Aurora Home: AI planuje fabułę w panelu, slajdy pojawiają się na płótnie jeden po drugim, a gotowa prezentacja kończy się finałowym wezwaniem do działania" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/slides-cover.webp" alt="GenOffice Slides: slajd tytułowy wygenerowanej przez AI prezentacji inwestorskiej Aurora Home na płótnie, z oryginalnym jednowierszowym promptem i podsumowaniem AI tego, co zbudowała, w panelu"></td>
-<td width="50%"><img src="../assets/readme/slides-ai.webp" alt="GenOffice Slides: zaprojektowany slajd końcowy tej samej 11-slajdowej prezentacji, z paskiem miniatur po lewej i panelem AI podsumowującym fabułę"></td>
+<td width="50%"><img src="../assets/readme/slides-cover.webp" alt="AlternateOffice Slides: slajd tytułowy wygenerowanej przez AI prezentacji inwestorskiej Aurora Home na płótnie, z oryginalnym jednowierszowym promptem i podsumowaniem AI tego, co zbudowała, w panelu"></td>
+<td width="50%"><img src="../assets/readme/slides-ai.webp" alt="AlternateOffice Slides: zaprojektowany slajd końcowy tej samej 11-slajdowej prezentacji, z paskiem miniatur po lewej i panelem AI podsumowującym fabułę"></td>
 </tr>
 <tr>
-<td><b>Jedna linijka na wejściu</b> — „Stwórz 10-slajdową prezentację inwestorską dla Aurora Home…”. GenOffice planuje fabułę, sprawdza dane liczbowe i tworzy każdy slajd na płótnie jako prawdziwy plik `.pptx`.</td>
+<td><b>Jedna linijka na wejściu</b> — „Stwórz 10-slajdową prezentację inwestorską dla Aurora Home…”. AlternateOffice planuje fabułę, sprawdza dane liczbowe i tworzy każdy slajd na płótnie jako prawdziwy plik `.pptx`.</td>
 <td><b>Gotowa prezentacja na wyjściu</b> — jedenaście zaprojektowanych slajdów o spójnej typografii, grafice i zamykającym wezwaniu do działania; edytuj dalej za pomocą wzorców, układów, inteligentnych linii pomocniczych i nieinwazyjnego kadrowania, albo poproś panel o zmianę stylu, przepisanie i przełożenie kolejności.</td>
 </tr>
 </table>
@@ -114,8 +114,8 @@ AI jest prowadzona promptem widocznym w panelu.
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/pdf-edit.webp" alt="GenOffice PDF: tryb Edit text zaznacza każdy blok tekstu na stronie do edycji w miejscu, a panel AI odpowiada na pytanie o raport z cytowaniem stron"></td>
-<td width="50%"><img src="../assets/readme/pdf-convert.webp" alt="GenOffice Docs wyświetla dokument Word przekonwertowany lokalnie z kwartalnego raportu Helios w formacie PDF, otwarty w drugiej karcie obok oryginalnego PDF"></td>
+<td width="50%"><img src="../assets/readme/pdf-edit.webp" alt="AlternateOffice PDF: tryb Edit text zaznacza każdy blok tekstu na stronie do edycji w miejscu, a panel AI odpowiada na pytanie o raport z cytowaniem stron"></td>
+<td width="50%"><img src="../assets/readme/pdf-convert.webp" alt="AlternateOffice Docs wyświetla dokument Word przekonwertowany lokalnie z kwartalnego raportu Helios w formacie PDF, otwarty w drugiej karcie obok oryginalnego PDF"></td>
 </tr>
 <tr>
 <td><b>Edytuj wewnątrz strony</b> — tryb Edit text zaznacza każdy blok tekstu do ponownego wpisania w miejscu; strumień treści jest przepisywany przez PDFium z zachowaniem oryginalnych czcionek, a nie zasłaniany anotacją. Zadaj AI pytanie o długi raport i otrzymaj odpowiedzi z cytowaniem stron.</td>
@@ -130,11 +130,11 @@ proponuje **brief projektowy** — hasło, paletę kolorów, typografię i kieru
 stylistyczne — a potem buduje jeden samodzielny plik `.html` zgodny z tymi
 wytycznymi.
 
-<img src="../assets/readme/html-restyle-motion.webp" alt="Timelapse GenOffice HTML zmieniającego styl strony docelowej Lumen: jedno żądanie Restyle w panelu zmienia ciemną stronę Midnight Studio w ciepłą wersję Solar Daybreak, podczas gdy każda sekcja i cała treść pozostają na miejscu" width="100%">
+<img src="../assets/readme/html-restyle-motion.webp" alt="Timelapse AlternateOffice HTML zmieniającego styl strony docelowej Lumen: jedno żądanie Restyle w panelu zmienia ciemną stronę Midnight Studio w ciepłą wersję Solar Daybreak, podczas gdy każda sekcja i cała treść pozostają na miejscu" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/html-ai.webp" alt="GenOffice HTML: wygenerowana strona docelowa dla solarnej lampki biurkowej w ciemnym kierunku Midnight Studio, wyświetlana w podglądzie na żywo z panelem AI podsumowującym właśnie zbudowaną stronę"></td>
+<td width="50%"><img src="../assets/readme/html-ai.webp" alt="AlternateOffice HTML: wygenerowana strona docelowa dla solarnej lampki biurkowej w ciemnym kierunku Midnight Studio, wyświetlana w podglądzie na żywo z panelem AI podsumowującym właśnie zbudowaną stronę"></td>
 <td width="50%"><img src="../assets/readme/html-restyle.webp" alt="Ta sama strona docelowa Lumen przestylizowana przez AI na ciepły kierunek Solar Daybreak: papierowe tło, szeryfowe nagłówki i pomarańczowy akcent, z zachowaniem wszystkich sekcji i całej treści"></td>
 </tr>
 <tr>
@@ -144,8 +144,8 @@ wytycznymi.
 </table>
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/html-dashboard.webp" alt="GenOffice HTML: wygenerowany interfejs osobistego panelu dla projektanta freelancera w ciepłym, lnianym stylu, z lewym panelem bocznym, szeryfowym powitaniem i czterema kartami metryk"></td>
-<td width="50%"><img src="../assets/readme/html-report.webp" alt="GenOffice HTML: wygenerowany raport danych o rynku pojazdów elektrycznych w stylu gazetowym, z szeryfową winietą tytułową, nagłówkową liczbą 17,3 miliona i wierszem statystyk"></td>
+<td width="50%"><img src="../assets/readme/html-dashboard.webp" alt="AlternateOffice HTML: wygenerowany interfejs osobistego panelu dla projektanta freelancera w ciepłym, lnianym stylu, z lewym panelem bocznym, szeryfowym powitaniem i czterema kartami metryk"></td>
+<td width="50%"><img src="../assets/readme/html-report.webp" alt="AlternateOffice HTML: wygenerowany raport danych o rynku pojazdów elektrycznych w stylu gazetowym, z szeryfową winietą tytułową, nagłówkową liczbą 17,3 miliona i wierszem statystyk"></td>
 </tr>
 <tr>
 <td><b>Makiety interfejsów</b> — starter „personal dashboard” zamienia persona w działający układ: lewy panel boczny, powitanie, wykres iskrowy godzin rozliczeniowych, karty faktur i wykorzystania — wszystko jako prawdziwy HTML, który można przekazać programiście.</td>
@@ -157,8 +157,8 @@ wytycznymi.
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/markdown-ai.webp" alt="GenOffice Markdown: zaznaczony akapit pokazuje wyskakujące okno Ask AI z wpisaną instrukcją i chipami z podpowiedziami, takimi jak Polish, Make more concise, Expand i Fix grammar, a także przyciskami Send now i Add to queue"></td>
-<td width="50%"><img src="../assets/readme/markdown-render.webp" alt="GenOffice Markdown renderuje dokument z notatkami o wydaniu z tabelą, diagramem przepływu Mermaid i listą zadań, z podpowiedziami startowymi panelu AI po lewej stronie"></td>
+<td width="50%"><img src="../assets/readme/markdown-ai.webp" alt="AlternateOffice Markdown: zaznaczony akapit pokazuje wyskakujące okno Ask AI z wpisaną instrukcją i chipami z podpowiedziami, takimi jak Polish, Make more concise, Expand i Fix grammar, a także przyciskami Send now i Add to queue"></td>
+<td width="50%"><img src="../assets/readme/markdown-render.webp" alt="AlternateOffice Markdown renderuje dokument z notatkami o wydaniu z tabelą, diagramem przepływu Mermaid i listą zadań, z podpowiedziami startowymi panelu AI po lewej stronie"></td>
 </tr>
 <tr>
 <td><b>Zapytaj AI o zaznaczenie</b> — zaznacz dowolny fragment i pojawi się chip <b>Ask AI</b>: wpisz instrukcję lub wybierz podpowiedź, wyślij ją natychmiast albo umieść w kolejce kilka przypisanych do miejsc edycji i wykonaj je za jednym razem. Ta sama funkcja jest dostępna w każdej aplikacji.</td>
@@ -166,42 +166,42 @@ wytycznymi.
 </tr>
 </table>
 
-### 7 · CLI — Twój agent kodujący steruje GenOffice, na Twoim komputerze
+### 7 · CLI — Twój agent kodujący steruje AlternateOffice, na Twoim komputerze
 
-GenOffice dostarcza wiersz poleceń `genoffice` oraz skill dla agentów.
+AlternateOffice dostarcza wiersz poleceń `alternateoffice` oraz skill dla agentów.
 Zainstaluj skill, a Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot,
 OpenCode lub Windsurf będą mogły tworzyć, konwertować, czytać i edytować
 prawdziwe pliki Office przez te same silniki, co aplikacje, bez otwierania
 okna.
 
-<img src="../assets/readme/cli-deck-in-app.webp" alt="GenOffice Slides pokazuje ośmioslajdową prezentację o Układzie Słonecznym, którą agent kodujący zbudował przez wiersz poleceń genoffice: slajd tytułowy na płótnie, osiem miniatur po lewej i otwarty panel AI" width="100%">
+<img src="../assets/readme/cli-deck-in-app.webp" alt="AlternateOffice Slides pokazuje ośmioslajdową prezentację o Układzie Słonecznym, którą agent kodujący zbudował przez wiersz poleceń alternateoffice: slajd tytułowy na płótnie, osiem miniatur po lewej i otwarty panel AI" width="100%">
 
 <table>
 <tr>
 <td width="50%"><img src="../assets/readme/cli-slides-grid.webp" alt="Osiem wyrenderowanych slajdów prezentacji o Układzie Słonecznym obok siebie: okładka, oś czasu eksploracji, cztery kluczowe liczby, wykres słupkowy średnic planet, planety skaliste kontra olbrzymy, 99,8% Słońca jako liczba nagłówkowa, siatka czterech olbrzymów i wnioski"></td>
-<td width="50%"><img src="../assets/readme/cli-integrations.webp" alt="Ustawienia GenOffice, strona Integracje: skill genoffice zainstalowany w Claude Code, z przyciskami Zainstaluj przy pozycjach Codex i Cursor"></td>
+<td width="50%"><img src="../assets/readme/cli-integrations.webp" alt="Ustawienia AlternateOffice, strona Integracje: skill alternateoffice zainstalowany w Claude Code, z przyciskami Zainstaluj przy pozycjach Codex i Cursor"></td>
 </tr>
 <tr>
-<td><b>Jeden prompt do Twojego agenta</b> — „Zbuduj ośmioslajdową prezentację o Układzie Słonecznym”. Agent czyta skill, pisze arkusz stylów, konspekt i jedną specyfikację strony na slajd, generuje dwa zdjęcia za pomocą <code>genoffice image</code> i pozwala, by <code>genoffice slides check</code> odrzuciło wszystko, co wychodzi poza obszar lub nachodzi na siebie, zanim <code>genoffice create</code> złoży plik <code>.pptx</code>, a <code>slides render</code> odda po jednym PNG na slajd do obejrzenia.</td>
-<td><b>Zainstaluj raz, w Ustawienia → Integracje</b> — GenOffice wyświetla agentów kodujących, których znajdzie na tym komputerze, i zapisuje skill w każdym, którego wybierzesz. Możesz też pobrać skill jako zip albo uruchomić <code>npx skills add genspark-ai/genoffice</code>. Polecenia i pełny przepływ pracy znajdziesz w sekcji <a href="#command-line-and-agent-skill">Wiersz poleceń i skill dla agentów</a>.</td>
+<td><b>Jeden prompt do Twojego agenta</b> — „Zbuduj ośmioslajdową prezentację o Układzie Słonecznym”. Agent czyta skill, pisze arkusz stylów, konspekt i jedną specyfikację strony na slajd, generuje dwa zdjęcia za pomocą <code>alternateoffice image</code> i pozwala, by <code>alternateoffice slides check</code> odrzuciło wszystko, co wychodzi poza obszar lub nachodzi na siebie, zanim <code>alternateoffice create</code> złoży plik <code>.pptx</code>, a <code>slides render</code> odda po jednym PNG na slajd do obejrzenia.</td>
+<td><b>Zainstaluj raz, w Ustawienia → Integracje</b> — AlternateOffice wyświetla agentów kodujących, których znajdzie na tym komputerze, i zapisuje skill w każdym, którego wybierzesz. Możesz też pobrać skill jako zip albo uruchomić <code>npx skills add genspark-ai/alternateoffice</code>. Polecenia i pełny przepływ pracy znajdziesz w sekcji <a href="#command-line-and-agent-skill">Wiersz poleceń i skill dla agentów</a>.</td>
 </tr>
 </table>
 
 ### 8 · MCP — te same narzędzia przez Model Context Protocol
 
-Każde polecenie `genoffice` jest też narzędziem MCP. Claude Code, Claude
+Każde polecenie `alternateoffice` jest też narzędziem MCP. Claude Code, Claude
 Desktop, Cursor i każdy inny klient MCP mogą samodzielnie uruchomić
-`genoffice mcp`, bez instalowania jakiegokolwiek skilla i bez otwierania
+`alternateoffice mcp`, bez instalowania jakiegokolwiek skilla i bez otwierania
 okna, i otrzymują 29 narzędzi oraz odniesienia do operacji jako zasoby.
 Drugi, serwer HTTP wewnątrz aplikacji pozwala agentowi budować dokument
 Word w widocznej karcie edytora, podczas gdy Ty patrzysz.
 
-<img src="../assets/readme/mcp-deck-motion.webp" alt="Poklatkowe nagranie Claude Code budującego ośmioslajdową prezentację inwestorską o energii odnawialnej przez serwer MCP genoffice: szuka ilustracji i zdjęć, sprawdza każde kandydujące zdjęcie za pomocą media, deck_start zapisuje arkusz stylów i konspekt, deck_page dodaje po jednej sprawdzonej stronie naraz, deck_build składa plik .pptx, a slides_render zwraca obraz każdego slajdu; gotowa prezentacja otwiera się potem w GenOffice Slides" width="100%">
+<img src="../assets/readme/mcp-deck-motion.webp" alt="Poklatkowe nagranie Claude Code budującego ośmioslajdową prezentację inwestorską o energii odnawialnej przez serwer MCP alternateoffice: szuka ilustracji i zdjęć, sprawdza każde kandydujące zdjęcie za pomocą media, deck_start zapisuje arkusz stylów i konspekt, deck_page dodaje po jednej sprawdzonej stronie naraz, deck_build składa plik .pptx, a slides_render zwraca obraz każdego slajdu; gotowa prezentacja otwiera się potem w AlternateOffice Slides" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="../assets/readme/mcp-deck-in-app.webp" alt="GenOffice Slides pokazuje ośmioslajdową prezentację Renewable Energy 2026, którą Claude Code zbudował przez serwer MCP genoffice: slajd tytułowy ze zdjęciem farmy wiatrowej na płótnie i osiem miniatur po lewej"></td>
-<td width="50%"><img src="../assets/readme/mcp-integrations.webp" alt="Ustawienia GenOffice, strona Integracje, część MCP: jednowierszowe polecenie claude mcp add dla Claude Code, blok JSON dla Cursor, Claude Desktop i innych klientów MCP oraz opcja lokalnego serwera HTTP poniżej"></td>
+<td width="50%"><img src="../assets/readme/mcp-deck-in-app.webp" alt="AlternateOffice Slides pokazuje ośmioslajdową prezentację Renewable Energy 2026, którą Claude Code zbudował przez serwer MCP alternateoffice: slajd tytułowy ze zdjęciem farmy wiatrowej na płótnie i osiem miniatur po lewej"></td>
+<td width="50%"><img src="../assets/readme/mcp-integrations.webp" alt="Ustawienia AlternateOffice, strona Integracje, część MCP: jednowierszowe polecenie claude mcp add dla Claude Code, blok JSON dla Cursor, Claude Desktop i innych klientów MCP oraz opcja lokalnego serwera HTTP poniżej"></td>
 </tr>
 <tr>
 <td><b>Jeden prompt, 38 wywołań narzędzi, bez terminala</b> — „Zbuduj ośmioslajdową prezentację inwestorską o energii odnawialnej w 2026 roku, z prawdziwym zdjęciem na okładce i wszędzie tam, gdzie zdjęcie się przyda”. Agent pobiera ilustracje i zdjęcia za pomocą <code>search</code>, pyta <code>media</code>, czy każde kandydujące zdjęcie jest prawdziwą fotografią, wywołuje <code>deck_start</code> z arkuszem stylów i konspektem, potem <code>deck_page</code> raz na slajd; każda strona jest sprawdzana względem konspektu i palety, zanim zostanie zachowana, <code>deck_build</code> składa plik <code>.pptx</code>, <code>slides_audit</code> szuka przepełnień, <code>slides_render</code> oddaje po jednym PNG na slajd jako treść obrazu, którą model może obejrzeć, a <code>deck_replace</code> poprawia trzy strony, które mu się nie spodobały.</td>
@@ -209,7 +209,7 @@ Word w widocznej karcie edytora, podczas gdy Ty patrzysz.
 </tr>
 </table>
 
-## Dlaczego GenOffice
+## Dlaczego AlternateOffice
 
 - **Otwarty kod źródłowy**, Apache-2.0, tworzony w pełni otwarcie na GitHubie.
 - **Twój do uruchomienia.** Natywne aplikacje na macOS, Windows i Linux; pliki
@@ -228,7 +228,7 @@ Word w widocznej karcie edytora, podczas gdy Ty patrzysz.
   Word, Excel lub PowerPoint lokalnie, z systemowym OCR dla skanów.
 - **Także Markdown i HTML**, z tym samym panelem AI i lokalnym eksportem do
   Word.
-- **Skryptowalne.** Wiersz poleceń `genoffice`, skill dla agentów i serwer
+- **Skryptowalne.** Wiersz poleceń `alternateoffice`, skill dla agentów i serwer
   MCP oddają każdy silnik do dyspozycji Claude Code, Claude Desktop, Codex,
   Cursor i innych agentów — nadal lokalnie na urządzeniu.
 - **Bezpłatne**, dla pojedynczych osób i zespołów.
@@ -258,10 +258,10 @@ zachowują oryginalne kolory dokumentu.
 
 ## Wiersz poleceń i skill dla agentów
 
-Wszystko, co aplikacje potrafią zrobić z plikiem, wiersz poleceń `genoffice`
+Wszystko, co aplikacje potrafią zrobić z plikiem, wiersz poleceń `alternateoffice`
 potrafi zrobić z terminala: sprawdzać, konwertować, tworzyć, czytać i
 edytować pliki Word, Excel, PowerPoint, PDF, Markdown i HTML na tych samych
-silnikach, bez interfejsu graficznego. Instaluje się razem z GenOffice, nie
+silnikach, bez interfejsu graficznego. Instaluje się razem z AlternateOffice, nie
 potrzebuje własnego środowiska uruchomieniowego i nigdy nie wysyła dokumentu
 poza komputer. W połączeniu z dołączonym **skillem dla agentów** zamienia
 agenta kodującego w pracownika biurowego, który tworzy prawdziwe pliki Office
@@ -276,30 +276,30 @@ każdym klientem MCP.
 
 | Jak                                       | Co się dzieje                                                                                                                                                                                          |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Ustawienia → Integracje** w aplikacji   | Wyświetla agentów znalezionych na tym komputerze; jedno kliknięcie zapisuje skill w każdym, którego wybierzesz. Gdy nowe wydanie GenOffice przynosi nowszy skill, pojawia się przycisk **Aktualizuj**. |
+| **Ustawienia → Integracje** w aplikacji   | Wyświetla agentów znalezionych na tym komputerze; jedno kliknięcie zapisuje skill w każdym, którego wybierzesz. Gdy nowe wydanie AlternateOffice przynosi nowszy skill, pojawia się przycisk **Aktualizuj**. |
 | **Pobierz jako zip** na tej samej stronie | Układ, który claude.ai, aplikacje desktopowe Claude i inni asystenci przyjmują jako przesłany skill.                                                                                                   |
-| `npx skills add genspark-ai/genoffice`    | Instaluje z tego repozytorium w dowolnym agencie obsługującym skille.                                                                                                                                  |
+| `npx skills add genspark-ai/alternateoffice`    | Instaluje z tego repozytorium w dowolnym agencie obsługującym skille.                                                                                                                                  |
 
 Następnie zacznij nowy czat i poproś o dokument. Skill uczy agenta, kiedy
-sięgać po `genoffice`, jak przeczytać plik przed jego edycją i jak sprawdzać
+sięgać po `alternateoffice`, jak przeczytać plik przed jego edycją i jak sprawdzać
 własną pracę.
 
 ### Szybki start z terminala
 
 ```bash
-genoffice --version
-genoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
-genoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx, …
-genoffice create --type docx --from notes.md --out notes.docx
-genoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
-genoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
-genoffice render report.docx --out shots/          # one PNG per page, to look at what you made
-genoffice open sales.xlsx                          # hand the result to the editor
+alternateoffice --version
+alternateoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
+alternateoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx, …
+alternateoffice create --type docx --from notes.md --out notes.docx
+alternateoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
+alternateoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
+alternateoffice render report.docx --out shots/          # one PNG per page, to look at what you made
+alternateoffice open sales.xlsx                          # hand the result to the editor
 ```
 
 Każde polecenie wypisuje jednowierszowe podsumowanie albo — z `--json` —
 pojedynczy obiekt JSON. Edycje są atomowe: odrzucona operacja pozostawia plik
-nietknięty i wraca z pomocnym komunikatem błędu. `genoffice help` wypisuje
+nietknięty i wraca z pomocnym komunikatem błędu. `alternateoffice help` wypisuje
 aktualny zestaw poleceń; pełna dokumentacja znajduje się w
 [packages/cli/README.md](../../packages/cli/README.md).
 
@@ -310,21 +310,21 @@ Claude Code. W tle agent podążał za etapowym przepływem pracy ze skilla, a
 CLI sprawdzało każdy etap, zanim zaczął się następny:
 
 ```bash
-genoffice capabilities --json                        # which cloud tools GenOffice has configured
-genoffice guide slides design                        # the deck workflow and layout library
-genoffice image "the eight planets in a row …" --aspect 16:9 --out deck/assets/cover.jpg
-genoffice slides check deck/outline.json --json      # 8 pages, no findings
-genoffice slides check deck/pages/01.json --json     # builds one slide, audits overflow and overlap
+alternateoffice capabilities --json                        # which cloud tools AlternateOffice has configured
+alternateoffice guide slides design                        # the deck workflow and layout library
+alternateoffice image "the eight planets in a row …" --aspect 16:9 --out deck/assets/cover.jpg
+alternateoffice slides check deck/outline.json --json      # 8 pages, no findings
+alternateoffice slides check deck/pages/01.json --json     # builds one slide, audits overflow and overlap
 …                                                    # one page file per slide, fixed until each check is clean
-genoffice create --type pptx --spec deck/pages --outline deck/outline.json --out deck/solar-system.pptx --json
-genoffice slides render deck/solar-system.pptx --out deck/shots --json
-genoffice slides audit deck/solar-system.pptx --json    # 8 slides, no layout issues
-genoffice slides replace deck/solar-system.pptx --slide 4 --spec deck/pages/05.json --json
-genoffice open deck/solar-system.pptx
+alternateoffice create --type pptx --spec deck/pages --outline deck/outline.json --out deck/solar-system.pptx --json
+alternateoffice slides render deck/solar-system.pptx --out deck/shots --json
+alternateoffice slides audit deck/solar-system.pptx --json    # 8 slides, no layout issues
+alternateoffice slides replace deck/solar-system.pptx --slide 4 --spec deck/pages/05.json --json
+alternateoffice open deck/solar-system.pptx
 ```
 
-Wewnątrz `genoffice` nie dochodzi do żadnego wywołania modelu: agent myśli,
-CLI buduje i sprawdza, a wynik otwiera się w GenOffice lub PowerPoint jako
+Wewnątrz `alternateoffice` nie dochodzi do żadnego wywołania modelu: agent myśli,
+CLI buduje i sprawdza, a wynik otwiera się w AlternateOffice lub PowerPoint jako
 zwyczajny plik `.pptx`.
 
 <a id="mcp-server"></a>
@@ -339,33 +339,33 @@ sposoby połączenia, oba pokazane z gotowymi do skopiowania fragmentami w
 
 | Sposób                             | Co to jest                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **A · `genoffice mcp`** (zalecane) | Serwer stdio, który asystent uruchamia sam; GenOffice nie musi być otwarte. Jedno narzędzie na polecenie (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) oraz etapowy przepływ prezentacji `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Operacje, specyfikacje i Markdown są przekazywane inline, więc działa też klient bez systemu plików. |
-| **B · Lokalny serwer HTTP**        | Działa wewnątrz aplikacji GenOffice pod adresem `http://127.0.0.1:3093/mcp` (Streamable HTTP, z przestarzałym SSE). Jego narzędzia sterują widoczną kartą edytora Word: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, a Ty obserwujesz, jak dokument nabiera kształtu. Domyślnie wyłączony; włącz go w tym samym panelu ustawień.                                                                                                                             |
+| **A · `alternateoffice mcp`** (zalecane) | Serwer stdio, który asystent uruchamia sam; AlternateOffice nie musi być otwarte. Jedno narzędzie na polecenie (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) oraz etapowy przepływ prezentacji `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Operacje, specyfikacje i Markdown są przekazywane inline, więc działa też klient bez systemu plików. |
+| **B · Lokalny serwer HTTP**        | Działa wewnątrz aplikacji AlternateOffice pod adresem `http://127.0.0.1:3093/mcp` (Streamable HTTP, z przestarzałym SSE). Jego narzędzia sterują widoczną kartą edytora Word: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, a Ty obserwujesz, jak dokument nabiera kształtu. Domyślnie wyłączony; włącz go w tym samym panelu ustawień.                                                                                                                             |
 
 ```bash
 # Claude Code
-claude mcp add --transport stdio genoffice -- genoffice mcp
+claude mcp add --transport stdio alternateoffice -- alternateoffice mcp
 ```
 
 ```jsonc
 // Cursor, Claude Desktop lub inny klient MCP
-{ "mcpServers": { "genoffice": { "command": "genoffice", "args": ["mcp"] } } }
+{ "mcpServers": { "alternateoffice": { "command": "alternateoffice", "args": ["mcp"] } } }
 ```
 
-`genoffice` oznacza tu CLI dostarczane wewnątrz aplikacji (na macOS
-`/Applications/GenOffice.app/Contents/Resources/cli/genoffice`; panel
+`alternateoffice` oznacza tu CLI dostarczane wewnątrz aplikacji (na macOS
+`/Applications/AlternateOffice.app/Contents/Resources/cli/alternateoffice`; panel
 ustawień wyświetla dokładną ścieżkę dla Twojej instalacji). Serwer niesie
 własne instrukcje przepływu pracy i udostępnia odniesienia do operacji
-jako zasoby `genoffice://guide/*`, więc żaden skill nie jest potrzebny;
+jako zasoby `alternateoffice://guide/*`, więc żaden skill nie jest potrzebny;
 skill i serwer MCP mogą współistnieć, a asystent wybiera jeden z nich.
 Funkcje w chmurze (`search`, `image`, `media`) nadal przechodzą przez
-dostawcę skonfigurowanego w GenOffice; wszystko inne działa lokalnie, a
-`GENOFFICE_ALLOWED_ROOTS` ogranicza każde narzędzie do folderów, które
+dostawcę skonfigurowanego w AlternateOffice; wszystko inne działa lokalnie, a
+`ALTERNATEOFFICE_ALLOWED_ROOTS` ogranicza każde narzędzie do folderów, które
 wskażesz.
 
 Prezentacja o energii odnawialnej z dema powyżej pokazuje, jak od strony
 protokołu wygląda jeden prompt w Claude Code z podłączonym tylko serwerem
-MCP `genoffice`:
+MCP `alternateoffice`:
 
 ```text
 capabilities · guide(slides, spec) · guide(slides, design)
@@ -386,7 +386,7 @@ Trzydzieści osiem wywołań, około trzynastu minut, i asystent ani razu nie
 dotknął terminala: ilustracje, zdjęcia, przewodniki, sprawdzenia i
 renderowania podróżowały jako wyniki narzędzi MCP. Tylko `search` i
 `media` opuściły maszynę, trafiając do dostawcy skonfigurowanego w
-GenOffice.
+AlternateOffice.
 
 <a id="download"></a>
 
@@ -409,18 +409,18 @@ podpisane. Starsze wersje znajdują się na stronie
 <details>
 <summary><b>Instalacja na Linuksie</b></summary>
 
-Plik deb instaluje się przez apt — ściąga zależności i dodaje GenOffice do
+Plik deb instaluje się przez apt — ściąga zależności i dodaje AlternateOffice do
 menu aplikacji:
 
 ```bash
-sudo apt install ./genoffice_<version>_amd64.deb
+sudo apt install ./alternateoffice_<version>_amd64.deb
 ```
 
 Na Fedorze / rodzinie RHEL / openSUSE zainstaluj pakiet rpm:
 
 ```bash
-sudo dnf install ./genoffice-<version>.x86_64.rpm     # Fedora / rodzina RHEL
-sudo zypper install ./genoffice-<version>.x86_64.rpm  # openSUSE
+sudo dnf install ./alternateoffice-<version>.x86_64.rpm     # Fedora / rodzina RHEL
+sudo zypper install ./alternateoffice-<version>.x86_64.rpm  # openSUSE
 ```
 
 AppImage działa bez instalacji: zainstaluj środowisko FUSE 2
@@ -428,8 +428,8 @@ AppImage działa bez instalacji: zainstaluj środowisko FUSE 2
 `libfuse2t64`), nadaj plikowi prawo wykonywania, a potem go uruchom:
 
 ```bash
-chmod +x GenOffice-<version>.AppImage
-./GenOffice-<version>.AppImage
+chmod +x AlternateOffice-<version>.AppImage
+./AlternateOffice-<version>.AppImage
 ```
 
 </details>
@@ -470,37 +470,37 @@ npm run dist:linux   # package Linux AppImage + deb + rpm
 ```
 
 Aplikacja sheets dodatkowo wymaga zestawu narzędzi Rust dla swojego
-sidecara xlsx (`cargo` w PATH); `npm run build -w @genoffice/sheets`
+sidecara xlsx (`cargo` w PATH); `npm run build -w @alternateoffice/sheets`
 kompiluje go automatycznie. Zobacz [CONTRIBUTING.md](../../CONTRIBUTING.md),
 aby poznać kontrole, które musi przejść każda zmiana, oraz sposób
 scalania pull requestów.
 
 ## Społeczność
 
-GenOffice jest w aktywnym rozwoju, a Twoja opinia go kształtuje.
+AlternateOffice jest w aktywnym rozwoju, a Twoja opinia go kształtuje.
 
 - **Zgłoś błąd lub poproś o funkcję** w
   [GitHub Issues](https://github.com/genspark-ai/genoffice/issues).
-- **Przyłącz się do czatu grupowego GenOffice** na
+- **Przyłącz się do czatu grupowego AlternateOffice** na
   [GenTeam](https://genoffice.ai/join), aby rozmawiać z zespołem i innymi
   użytkownikami.
-- **Oznacz repozytorium gwiazdką**, jeśli GenOffice jest dla Ciebie
+- **Oznacz repozytorium gwiazdką**, jeśli AlternateOffice jest dla Ciebie
   przydatne — to najlepszy sposób wsparcia projektu.
 
 ## FAQ
 
 <details>
-<summary><b>Czy GenOffice jest darmowe?</b></summary>
+<summary><b>Czy AlternateOffice jest darmowe?</b></summary>
 
-Tak. GenOffice jest darmowe i otwarte na licencji Apache-2.0 — bez okresu
+Tak. AlternateOffice jest darmowe i otwarte na licencji Apache-2.0 — bez okresu
 próbnego, bez płatnego poziomu dla samych aplikacji.
 
 </details>
 
 <details>
-<summary><b>Czy GenOffice może otwierać pliki Microsoft Word, Excel i PowerPoint?</b></summary>
+<summary><b>Czy AlternateOffice może otwierać pliki Microsoft Word, Excel i PowerPoint?</b></summary>
 
-Tak. GenOffice otwiera i zapisuje natywne pliki `.docx`, `.xlsx` i `.pptx`.
+Tak. AlternateOffice otwiera i zapisuje natywne pliki `.docx`, `.xlsx` i `.pptx`.
 Zapis zachowuje treść bit po bicie: części pliku, których nie dotknięto, są
 zapisywane z powrotem bez zmian, dzięki czemu dokumenty wciąż działają w
 Microsoft Office.
@@ -508,7 +508,7 @@ Microsoft Office.
 </details>
 
 <details>
-<summary><b>Czy GenOffice działa offline?</b></summary>
+<summary><b>Czy AlternateOffice działa offline?</b></summary>
 
 Edycja dokumentów jest w pełni lokalna — pliki nigdy nie opuszczają Twojego
 urządzenia, aby zostać otwarte, edytowane, zapisane lub przekonwertowane.
@@ -519,7 +519,7 @@ modelu.
 </details>
 
 <details>
-<summary><b>Czy GenOffice może edytować pliki PDF?</b></summary>
+<summary><b>Czy AlternateOffice może edytować pliki PDF?</b></summary>
 
 Tak — to prawdziwa edycja tekstu i obrazów w PDF, która przepisuje strumień
 treści strony z zachowaniem oryginalnych czcionek, a nie zasłania go
@@ -528,7 +528,7 @@ anotacjami.
 </details>
 
 <details>
-<summary><b>Czy GenOffice może konwertować PDF do Word, Excel lub PowerPoint?</b></summary>
+<summary><b>Czy AlternateOffice może konwertować PDF do Word, Excel lub PowerPoint?</b></summary>
 
 Tak — całkowicie lokalnie: ekstrakcja znaków na poziomie PDFium wraz z
 analizą układu opartą na geometrii, bez usługi w chmurze, bez wysyłania
@@ -541,7 +541,7 @@ tekstu, a nie obrazu strony.
 <details>
 <summary><b>Czy mogę użyć własnego modelu AI lub klucza API?</b></summary>
 
-Tak. Oprócz bezkluczowego logowania przez Genspark, GenOffice wspiera
+Tak. Oprócz bezkluczowego logowania przez Genspark, AlternateOffice wspiera
 użycie własnego klucza dla Claude, OpenAI, Gemini, DeepSeek, Kimi, GLM,
 Qwen, Doubao, MiniMax, Grok, Mistral, OpenRouter, Requesty i OpenCode Zen/Go, a także
 dowolnego endpointu zgodnego z OpenAI — w tym lokalnych serwerów modeli.
@@ -551,7 +551,7 @@ klucze w Ustawienia → AI Media & Search.
 </details>
 
 <details>
-<summary><b>Czy GenOffice może konwertować HTML do Worda?</b></summary>
+<summary><b>Czy AlternateOffice może konwertować HTML do Worda?</b></summary>
 
 Tak — opcja Export as Word w aplikacji HTML tworzy natywny, edytowalny plik
 `.docx` całkowicie lokalnie. Strona jest renderowana we wbudowanym Chromium
@@ -563,9 +563,9 @@ osadzane jako obrazy.
 </details>
 
 <details>
-<summary><b>Czy mogę sterować GenOffice z narzędzi Claude Code, Codex, Cursor albo ze skryptu?</b></summary>
+<summary><b>Czy mogę sterować AlternateOffice z narzędzi Claude Code, Codex, Cursor albo ze skryptu?</b></summary>
 
-Tak. GenOffice instaluje wiersz poleceń `genoffice`, który uruchamia te same
+Tak. AlternateOffice instaluje wiersz poleceń `alternateoffice`, który uruchamia te same
 silniki bez interfejsu graficznego: sprawdzaj, konwertuj, twórz, czytaj i
 edytuj dokumenty z terminala lub skryptu, z wyjściem `--json` dla programów.
 Dołączony skill dla agentów uczy Claude Code, Codex, Cursor, Gemini CLI,
@@ -576,13 +576,13 @@ GitHub Copilot, OpenCode i Windsurf, jak z niego korzystać; zainstaluj go w
 </details>
 
 <details>
-<summary><b>Czy GenOffice zbiera jakieś dane?</b></summary>
+<summary><b>Czy AlternateOffice zbiera jakieś dane?</b></summary>
 
 Oficjalne pakowane wersje domyślnie wysyłają ograniczoną telemetrię
 użytkowania, a raportowanie można wyłączyć w każdej chwili w Ustawienia →
 Ogólne. Telemetria nigdy nie wysyła treści dokumentów, nazw plików, ścieżek
 plików, tożsamości konta ani adresów e-mail. Zobacz
-[GenOffice Privacy](../../PRIVACY.md), aby poznać pełny wykaz zdarzeń i
+[AlternateOffice Privacy](../../PRIVACY.md), aby poznać pełny wykaz zdarzeń i
 ujawnianych danych.
 
 </details>
@@ -595,7 +595,7 @@ linków zewnętrznych) oraz modele zagrożeń dla treści generowanych przez AI.
 
 ## Podziękowania
 
-GenOffice nie byłoby możliwe bez tych projektów open source:
+AlternateOffice nie byłoby możliwe bez tych projektów open source:
 
 - [Electron](https://www.electronjs.org/) — środowisko desktopowe dla każdej
   aplikacji.
@@ -644,10 +644,10 @@ wykonawczego są na licencjach MIT/Apache-2.0/BSD-3-Clause/OFL.
 
 ## Licencja
 
-GenOffice jest licencjonowane na warunkach [Apache License 2.0](../../LICENSE), z
+AlternateOffice jest licencjonowane na warunkach [Apache License 2.0](../../LICENSE), z
 jednym wyjątkiem: katalog `ee/` jest zarezerwowany dla przyszłych modułów
-enterprise i jest objęty [GenOffice Enterprise License](../../ee/LICENSE).
+enterprise i jest objęty [AlternateOffice Enterprise License](../../ee/LICENSE).
 
-Nazwy i logo GenOffice oraz Genspark są znakami towarowymi Mainfunc, Inc.
+Nazwy i logo AlternateOffice oraz Genspark są znakami towarowymi Mainfunc, Inc.
 Licencja Apache-2.0 nie daje prawa do ich używania (patrz sekcja 6); forki
 powinny korzystać z własnej marki.

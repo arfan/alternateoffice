@@ -17,7 +17,7 @@ import {
 // temp dir (homedir is the one writable place a test may use that is
 // guaranteed to sit outside both), so it exercises the no-roots path.
 const outside = mkdtempSync(join(homedir(), '.genoffice-aisearch-outside-'))
-const inside = mkdtempSync(join(tmpdir(), 'genoffice-aisearch-inside-'))
+const inside = mkdtempSync(join(tmpdir(), 'alternateoffice-aisearch-inside-'))
 const secret = join(outside, 'private.png')
 
 afterAll(() => {
@@ -127,7 +127,7 @@ describe('loadMediaReference with caller-supplied roots', () => {
   })
 
   it('matches whole path segments, not string prefixes', () => {
-    const root = join(tmpdir(), 'genoffice-aisearch-root')
+    const root = join(tmpdir(), 'alternateoffice-aisearch-root')
     const sibling = `${root}-evil`
     mkdirSync(root, { recursive: true })
     mkdirSync(sibling, { recursive: true })

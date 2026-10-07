@@ -22,9 +22,9 @@ import {
   type GroupElement,
   type OpenedPptx,
   type SlideElement,
-} from '@genoffice/pptx-engine'
-import { runTxn } from '@genoffice/pptx-ops'
-import { OP_DOCS } from '@genoffice/pptx-ops'
+} from '@alternateoffice/pptx-engine'
+import { runTxn } from '@alternateoffice/pptx-ops'
+import { OP_DOCS } from '@alternateoffice/pptx-ops'
 
 const PNG_B64 =
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='

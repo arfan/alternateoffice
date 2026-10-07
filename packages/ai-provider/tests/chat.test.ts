@@ -163,7 +163,7 @@ describe('chatForProvider', () => {
     vi.stubGlobal('fetch', fetchMock)
     await chatForProvider('genspark', { apiKey: 'gsk-k', model: 'claude-opus-4-7' }, 'sys', 'hi')
     expect((fetchMock.mock.calls[0]![1].headers as Record<string, string>)['X-Agent-Type']).toBe(
-      'genoffice',
+      'alternateoffice',
     )
     fetchMock.mockClear()
     await chatForProvider('anthropic', { apiKey: 'k', model: 'claude-opus-4-7' }, 'sys', 'hi')

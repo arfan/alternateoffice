@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import type { IpcRendererEvent } from 'electron'
-import { installDropOpenBridge } from '@genoffice/electron-utils/drop-open'
+import { installDropOpenBridge } from '@alternateoffice/electron-utils/drop-open'
 import type { UpdateUiState } from '../shared/update-api'
 import type {
   DefaultAppStatus,

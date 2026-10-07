@@ -31,36 +31,36 @@ function okFetch() {
 
 describe('extractAnalyticsKeys', () => {
   it('reads the injected block from package.json', () => {
-    expect(extractAnalyticsKeys({ genofficeAnalytics: KEYS })).toEqual(KEYS)
+    expect(extractAnalyticsKeys({ alternateofficeAnalytics: KEYS })).toEqual(KEYS)
   })
 
   it('trims whitespace around the values', () => {
     expect(
       extractAnalyticsKeys({
-        genofficeAnalytics: { measurementId: ' G-1 ', apiSecret: ' s ' },
+        alternateofficeAnalytics: { measurementId: ' G-1 ', apiSecret: ' s ' },
       }),
     ).toEqual({ measurementId: 'G-1', apiSecret: 's' })
   })
 
   it('returns null when the block is missing (source/fork builds)', () => {
-    expect(extractAnalyticsKeys({ name: '@genoffice/shell' })).toBeNull()
+    expect(extractAnalyticsKeys({ name: '@alternateoffice/shell' })).toBeNull()
     expect(extractAnalyticsKeys(null)).toBeNull()
     expect(extractAnalyticsKeys('nope')).toBeNull()
   })
 
   it('returns null when either credential is empty or not a string', () => {
     expect(
-      extractAnalyticsKeys({ genofficeAnalytics: { measurementId: 'G-1', apiSecret: '' } }),
+      extractAnalyticsKeys({ alternateofficeAnalytics: { measurementId: 'G-1', apiSecret: '' } }),
     ).toBeNull()
     expect(
-      extractAnalyticsKeys({ genofficeAnalytics: { measurementId: 42, apiSecret: 's' } }),
+      extractAnalyticsKeys({ alternateofficeAnalytics: { measurementId: 42, apiSecret: 's' } }),
     ).toBeNull()
-    expect(extractAnalyticsKeys({ genofficeAnalytics: { measurementId: 'G-1' } })).toBeNull()
+    expect(extractAnalyticsKeys({ alternateofficeAnalytics: { measurementId: 'G-1' } })).toBeNull()
   })
 
   it('accepts metadata only for a packaged runtime', () => {
-    expect(extractPackagedAnalyticsKeys({ genofficeAnalytics: KEYS }, true)).toEqual(KEYS)
-    expect(extractPackagedAnalyticsKeys({ genofficeAnalytics: KEYS }, false)).toBeNull()
+    expect(extractPackagedAnalyticsKeys({ alternateofficeAnalytics: KEYS }, true)).toEqual(KEYS)
+    expect(extractPackagedAnalyticsKeys({ alternateofficeAnalytics: KEYS }, false)).toBeNull()
   })
 })
 

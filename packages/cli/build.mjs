@@ -11,12 +11,12 @@ const { version } = JSON.parse(await readFile(join(here, 'package.json'), 'utf8'
 
 /**
  * A packaged build overrides the app version through electron-builder
- * extraMetadata, which never reaches this file; GENOFFICE_APP_VERSION carries
- * it in, so the bundled `genoffice --version` cannot drift from the app that
+ * extraMetadata, which never reaches this file; ALTERNATEOFFICE_APP_VERSION carries
+ * it in, so the bundled `alternateoffice --version` cannot drift from the app that
  * shipped it. Unset (a plain workspace build) keeps the CLI package version.
  */
-export const CLI_VERSION_ENV = 'GENOFFICE_APP_VERSION'
-export const CLI_BUNDLE = join(here, 'dist/genoffice.cjs')
+export const CLI_VERSION_ENV = 'ALTERNATEOFFICE_APP_VERSION'
+export const CLI_BUNDLE = join(here, 'dist/alternateoffice.cjs')
 export const CLI_VERSION_BANNER_PREFIX = 'const __cliAppVersion = '
 
 export function resolveCliVersion(env, packageVersion) {
@@ -90,7 +90,7 @@ async function bundle() {
     // for asset lookups, so give them the bundle's own location.
     define: {
       'import.meta.url': '__cliImportMetaUrl',
-      __GENOFFICE_VERSION__: JSON.stringify(cliVersion),
+      __ALTERNATEOFFICE_VERSION__: JSON.stringify(cliVersion),
     },
     banner: {
       js: [

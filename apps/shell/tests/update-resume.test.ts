@@ -22,7 +22,7 @@ const realFetch = globalThis.fetch
 let dir: string
 
 beforeEach(async () => {
-  dir = await mkdtemp(join(tmpdir(), 'genoffice-resume-'))
+  dir = await mkdtemp(join(tmpdir(), 'alternateoffice-resume-'))
   // electron-updater mkdir's its cache dir and its pending/ subdir before the
   // download; the wrapper mkdir's the resume/ sibling itself
   await mkdir(join(dir, 'pending'), { recursive: true })

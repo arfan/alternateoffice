@@ -1,4 +1,4 @@
-import type { ParaFormat, StyleDisplay } from '@genoffice/docx-engine'
+import type { ParaFormat, StyleDisplay } from '@alternateoffice/docx-engine'
 import type { BlockMeta } from '../pagination-types'
 
 export interface DirectParaFlags {

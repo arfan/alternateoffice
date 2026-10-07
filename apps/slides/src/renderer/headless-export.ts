@@ -12,7 +12,7 @@ import {
   runHeadlessRendererExport,
   type HeadlessExportReport,
   type HeadlessWaitOptions,
-} from '@genoffice/electron-utils/headless-export'
+} from '@alternateoffice/electron-utils/headless-export'
 
 export interface DeckReadiness {
   /** pages built from a deck that came from disk */
@@ -49,7 +49,7 @@ export async function waitForDeckSettled(
   )
   // The private Office FontFaces are registered asynchronously after the deck
   // settles (doc-fonts.ts); metafiles rasterized before that keep fallback faces.
-  while (window.__genofficeDocFontsSynced === false && Date.now() <= deadline) {
+  while (window.__alternateofficeDocFontsSynced === false && Date.now() <= deadline) {
     await headlessSleep(pollMs)
   }
   await documentFontsSettled()

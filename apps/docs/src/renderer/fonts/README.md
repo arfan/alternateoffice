@@ -20,7 +20,7 @@ freely redistributable with the app. Licenses: Carlito and Liberation are
 (circumflex/breve) was dropped (Ậ/Ệ/Ộ in Regular/Bold); advance widths are unchanged.
 Renamed per OFL 1.1 §2 — "Carlito" is a Reserved Font Name. The files live in
 `packages/ui/src/fonts/` (shared with sheets and slides, which alias Calibri/Aptos
-to the same faces) and are referenced here as `@genoffice/ui/fonts/Carlito-*.ttf`.
+to the same faces) and are referenced here as `@alternateoffice/ui/fonts/Carlito-*.ttf`.
 
 Purpose: when a Word font declared by the document is missing on this machine, the
 browser's silent fallback (Helvetica etc.) changes glyph widths, so line-break points
@@ -53,7 +53,7 @@ forms + basic Latin
 Rare characters outside the subset still fall through to system fonts (shown as
 missing glyphs in minimal environments); bold is synthesized by the browser.
 
-The serif subset also backs the `GenOffice Fullwidth TC` face (`fonts.css`), a
+The serif subset also backs the `AlternateOffice Fullwidth TC` face (`fonts.css`), a
 unicode-range shim (U+FF0D/FF0F/FF3C/FF3F/FF5E) slotted before Songti TC in the
 Traditional Chinese serif chain: Songti TC draws those fullwidth glyphs at
 ~0.2-0.5em of ink inside the 1em advance, so a PMingLiU document's U+FF0F
@@ -64,9 +64,9 @@ chain order; advances are 1.0em everywhere, so line breaking is unchanged.
 
 | Font                                 | Role                                                        |
 | ------------------------------------ | ----------------------------------------------------------- |
-| GenOffice Serif KR (subset woff2)    | Batang-metric stand-in for Korean serif families            |
-| GenOffice Sans KR (subset woff2)     | fallback for Korean sans families (Malgun etc.)             |
-| GenOffice Che Latin KR (ASCII woff2) | half-width Latin for BatangChe/GulimChe/DotumChe/GungsuhChe |
+| AlternateOffice Serif KR (subset woff2)    | Batang-metric stand-in for Korean serif families            |
+| AlternateOffice Sans KR (subset woff2)     | fallback for Korean sans families (Malgun etc.)             |
+| AlternateOffice Che Latin KR (ASCII woff2) | half-width Latin for BatangChe/GulimChe/DotumChe/GungsuhChe |
 
 Source: Noto Serif/Sans CJK KR Regular from [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)
 (SIL OFL 1.1), subset with fonttools to the 2,350 KS X 1001 syllables + jamo
@@ -84,7 +84,7 @@ ink widths and side bearings of Batang/Malgun
 (`tools/normalize-kr-latin-metrics.py`,
 `tools/scale-kr-sans-latin-ink.py`).
 
-`GenOfficeCheLatinKR.woff2` is an ASCII-only derivative of GenOffice Sans KR.
+`GenOfficeCheLatinKR.woff2` is an ASCII-only derivative of AlternateOffice Sans KR.
 `tools/build-kr-che-latin-font.py` gives its Noto-derived outlines fixed 0.5em
 advances and transforms them to measured DotumChe ink boxes. Microsoft Office
 fonts are build-time measurement references only; no Microsoft outlines are
@@ -95,11 +95,11 @@ counterpart line factors live in `lineHeightFactor()` of `line-metrics.ts`.
 The Sans/Che source copyright (Adobe 2014–2021 and Google LLC), Serif source
 copyright (Adobe 2017–2024), and full OFL 1.1 text are in `LICENSE-OFL.txt`.
 
-### GenOffice Gothic KR
+### AlternateOffice Gothic KR
 
 | Font                               | Role                                            |
 | ---------------------------------- | ----------------------------------------------- |
-| GenOffice Gothic KR (subset woff2) | real-metric face for NanumGothic-declaring docs |
+| AlternateOffice Gothic KR (subset woff2) | real-metric face for NanumGothic-declaring docs |
 
 Source: NanumGothic Regular from [google/fonts](https://github.com/google/fonts/tree/main/ofl/nanumgothic)
 (SIL OFL 1.1). Word for Mac renders NanumGothic documents with the OS
@@ -114,11 +114,11 @@ Reserved Font Names include "Nanum" and "NanumGothic"; subsetting is a
 modification). The exact NHN copyright/Reserved Font Name notice and the full
 OFL 1.1 text are in `LICENSE-OFL.txt`.
 
-### GenOffice UI Kana JP
+### AlternateOffice UI Kana JP
 
 | Font                                      | Role                                                |
 | ----------------------------------------- | --------------------------------------------------- |
-| GenOffice UI Kana JP (Regular/Bold woff2) | Meiryo UI-advance kana/JP punctuation for the alias |
+| AlternateOffice UI Kana JP (Regular/Bold woff2) | Meiryo UI-advance kana/JP punctuation for the alias |
 
 Source: Noto Sans JP variable font from [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)
 (SIL OFL 1.1), instanced at wght 400/700. Word for Mac renders Meiryo UI with
@@ -137,7 +137,7 @@ outlines are modified).
 
 | Font                             | Role                                 |
 | -------------------------------- | ------------------------------------ |
-| GenOffice Poppins (subset woff2) | real face for Poppins-declaring docs |
+| AlternateOffice Poppins (subset woff2) | real face for Poppins-declaring docs |
 
 Source: Poppins Regular/Bold from [google/fonts](https://github.com/google/fonts/tree/main/ofl/poppins)
 (SIL OFL 1.1). Poppins is an M365 cloud font: Word downloads the real face and
@@ -155,7 +155,7 @@ order. Italic synthesizes oblique from these faces.
 
 | Font                    | Role                                     |
 | ----------------------- | ---------------------------------------- |
-| GenOffice Tamil (woff2) | Latha-metric stand-in for Tamil families |
+| AlternateOffice Tamil (woff2) | Latha-metric stand-in for Tamil families |
 
 Source: Noto Sans Tamil Regular from [notofonts](https://github.com/notofonts/notofonts.github.io)
 (SIL OFL 1.1). Word substitutes missing Tamil families with Latha; Chromium's
@@ -189,7 +189,7 @@ serif, so unknown Arabic families default to the Naskh chain.
 
 | Font                              | Role                                             |
 | --------------------------------- | ------------------------------------------------ |
-| GenOffice PUA Blank (woff2, 312B) | blank 1em glyph for all of U+E000-F8FF (BMP PUA) |
+| AlternateOffice PUA Blank (woff2, 312B) | blank 1em glyph for all of U+E000-F8FF (BMP PUA) |
 
 Generated from scratch by `tools/build-pua-blank-font.py` (no upstream font;
 two glyphs, both empty). Chromium never system-falls-back for Private Use

@@ -93,7 +93,7 @@ pub(crate) fn read_zip_string(
 /// in full before anything notices. Reading one byte past the claim keeps the
 /// cost of a part tracking its declaration — an honest entry stops at its own
 /// length, a lying one is caught here — which is the metered limit
-/// `@genoffice/zip-gate` enforces for the docx and pptx engines (#781) and the
+/// `@alternateoffice/zip-gate` enforces for the docx and pptx engines (#781) and the
 /// attachment parsers (#1386). Those callers are TypeScript and cannot be
 /// called from this crate, so the same rule is enforced on the read itself.
 pub(crate) fn copy_entry_bounded<R: Read, W: Write>(

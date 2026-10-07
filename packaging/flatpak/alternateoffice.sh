@@ -1,5 +1,5 @@
 #!/bin/sh
-# GenOffice Flatpak launcher (packaging/flatpak, genoffice#1858). The first
+# AlternateOffice Flatpak launcher (packaging/flatpak, alternateoffice#1858). The first
 # launch unpacks the extra-data deb into /app/extra/app, then Zypak runs the
 # bundled Electron so its own sandbox works inside the Flatpak sandbox.
 # ELECTRON_OZONE_PLATFORM_HINT lets Electron pick Wayland when the session

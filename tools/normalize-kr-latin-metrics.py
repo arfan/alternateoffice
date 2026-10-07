@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Normalize GenOffice Serif KR Latin metrics to Batang.
+"""Normalize AlternateOffice Serif KR Latin metrics to Batang.
 
 Word renders Batang-class names with the real Office face (probe 2026-08-24:
 Batang/바탕 declares lay Latin with real Batang, M 0.895em); the bundled
 subset kept Noto's Latin advances above it (M 0.975), so line breaks drift
-from Word on those documents. GenOffice Sans KR already went through the
+from Word on those documents. AlternateOffice Sans KR already went through the
 same treatment for Malgun (normalize-kr-sans-hmtx.py +
-scale-kr-sans-latin-ink.py). GenOffice Gothic KR is out of scope: it models
+scale-kr-sans-latin-ink.py). AlternateOffice Gothic KR is out of scope: it models
 the NanumGothic downloadable asset with its real metrics unmodified
 (build-gothic-kr-font.py) and must stay untouched.
 

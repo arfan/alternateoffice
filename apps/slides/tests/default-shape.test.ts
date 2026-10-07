@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import type { RenderNode } from '@genoffice/pptx-render'
+import type { RenderNode } from '@alternateoffice/pptx-render'
 import {
   defaultShapeStyle,
   saveDefaultShapeStyle,

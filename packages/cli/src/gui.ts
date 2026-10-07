@@ -4,8 +4,9 @@ import { join } from 'node:path'
 import { realizedPath } from './fs'
 import { CliError, EXIT } from './result'
 
-/** The shell's Electron userData directory, located without Electron (GENOFFICE_USER_DATA overrides). */
-export function genofficeUserDataDir(env: NodeJS.ProcessEnv): string {
+/** The shell's Electron userData directory, located without Electron (ALTERNATEOFFICE_USER_DATA overrides). */
+export function alternateofficeUserDataDir(env: NodeJS.ProcessEnv): string {
+  if (env.ALTERNATEOFFICE_USER_DATA) return env.ALTERNATEOFFICE_USER_DATA
   if (env.GENOFFICE_USER_DATA) return env.GENOFFICE_USER_DATA
   // Resolve the home from the env we were given (as os.homedir() does with process.env.HOME), so
   // an in-process caller with a substituted HOME never lands in the real user directories.
@@ -25,15 +26,15 @@ export interface GuiOpenDocuments {
 }
 
 /**
- * Files the running GenOffice shell has open, from the registries it publishes
+ * Files the running AlternateOffice shell has open, from the registries it publishes
  * on every tab change (apps/shell/src/main/open-documents.ts). Empty when no
  * shell is running: a registry whose pid is gone is a crash leftover.
  */
 export function guiOpenDocuments(
   env: NodeJS.ProcessEnv,
-  dirs = env.GENOFFICE_USER_DATA
-    ? [env.GENOFFICE_USER_DATA]
-    : [genofficeUserDataDir(env), `${genofficeUserDataDir(env)} Dev`],
+  dirs = env.ALTERNATEOFFICE_USER_DATA
+    ? [env.ALTERNATEOFFICE_USER_DATA]
+    : [alternateofficeUserDataDir(env), `${alternateofficeUserDataDir(env)} Dev`],
 ): GuiOpenDocuments[] {
   const live: GuiOpenDocuments[] = []
   for (const dir of dirs) {
@@ -70,12 +71,12 @@ export function assertNotOpenInGui(abs: string, env: NodeJS.ProcessEnv): void {
     if (!open.paths.some((p) => realizedPath(p) === target)) continue
     throw new CliError(
       EXIT.file,
-      `GenOffice has this file open: ${abs}`,
+      `AlternateOffice has this file open: ${abs}`,
       { gui_pid: open.pid },
       {
         reason: 'file_open_in_gui',
         suggestion:
-          'close the tab in GenOffice first, or pass --force to write anyway (the editor may overwrite your change on its next save)',
+          'close the tab in AlternateOffice first, or pass --force to write anyway (the editor may overwrite your change on its next save)',
       },
     )
   }

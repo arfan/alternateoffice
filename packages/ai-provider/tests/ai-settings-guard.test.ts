@@ -20,7 +20,7 @@ afterEach(() => {
 })
 
 function existingFilePath(): string {
-  const dir = mkdtempSync(join(tmpdir(), 'genoffice-ai-guard-'))
+  const dir = mkdtempSync(join(tmpdir(), 'alternateoffice-ai-guard-'))
   tempDirs.push(dir)
   const path = join(dir, 'codex')
   writeFileSync(path, '#!/bin/sh\n')
@@ -128,7 +128,7 @@ describe('sanitizeAiSettings', () => {
   it('keeps non-ASCII home paths (reviewer case: /Users/王/bin/codex)', () => {
     // the old ASCII-only [\w./:\\ -] class dropped these, silently losing the
     // saved Codex CLI path on the next settings save
-    const dir = mkdtempSync(join(tmpdir(), '王-genoffice-ai-guard-'))
+    const dir = mkdtempSync(join(tmpdir(), '王-alternateoffice-ai-guard-'))
     tempDirs.push(dir)
     const cliPath = join(dir, 'bin', 'codex')
     mkdirSync(join(dir, 'bin'), { recursive: true })
@@ -148,7 +148,7 @@ describe('sanitizeAiSettings', () => {
     // on POSIX the reviewer's string cannot name a real file, so exercise the
     // same shape (backslashes, dot, space, í) as a literal file name; on
     // Windows the exact reviewer string is stat'd directly and behaves the same
-    const dir = mkdtempSync(join(tmpdir(), 'genoffice-ai-guard-'))
+    const dir = mkdtempSync(join(tmpdir(), 'alternateoffice-ai-guard-'))
     tempDirs.push(dir)
     const cliPath = join(dir, 'C:\\Users\\Ana María\\codex.exe')
     writeFileSync(cliPath, 'bin\n')
@@ -156,7 +156,7 @@ describe('sanitizeAiSettings', () => {
   })
 
   it('expands ~/bin/codex for the existence check and stores it expanded', () => {
-    const home = mkdtempSync(join(tmpdir(), 'genoffice-ai-guard-home-'))
+    const home = mkdtempSync(join(tmpdir(), 'alternateoffice-ai-guard-home-'))
     tempDirs.push(home)
     mkdirSync(join(home, 'bin'), { recursive: true })
     writeFileSync(join(home, 'bin', 'codex'), '#!/bin/sh\n')
@@ -204,7 +204,7 @@ describe('validCliPath', () => {
   })
 
   it('accepts any characters in existing paths, including Unicode and spaces', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'genoffice-ai-guard-'))
+    const dir = mkdtempSync(join(tmpdir(), 'alternateoffice-ai-guard-'))
     tempDirs.push(dir)
     const unicode = join(dir, '工具', 'codex')
     mkdirSync(join(dir, '工具'), { recursive: true })
@@ -227,7 +227,7 @@ describe('validCliPath', () => {
   })
 
   it('rejects missing paths, directories, and non-strings', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'genoffice-ai-guard-'))
+    const dir = mkdtempSync(join(tmpdir(), 'alternateoffice-ai-guard-'))
     tempDirs.push(dir)
     // path-like values must exist as a file
     expect(validCliPath('/bin/sh; rm -rf ~')).toBe(false)

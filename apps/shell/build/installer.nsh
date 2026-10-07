@@ -1,5 +1,5 @@
-; Keeps the genoffice command line (resources\cli, holding genoffice.cmd and the
-; extension-less genoffice for Git Bash) on the installing user's PATH for the
+; Keeps the alternateoffice command line (resources\cli, holding alternateoffice.cmd and the
+; extension-less alternateoffice for Git Bash) on the installing user's PATH for the
 ; lifetime of the install. The value is read and written unexpanded
 ; (REG_EXPAND_SZ) so entries such as %USERPROFILE%\bin survive, and Explorer
 ; is told about the change so terminals opened afterwards see it.
@@ -9,7 +9,7 @@
 !include "WinMessages.nsh"
 !include "StrFunc.nsh"
 
-!define GENOFFICE_PATH_MAX 7900
+!define ALTERNATEOFFICE_PATH_MAX 7900
 
 ; Scope templates to our ProgIDs (electron-builder uses fileAssociations.name).
 ; A shared .ext\ShellNew would overwrite Office/WPS templates. OOXML files
@@ -58,7 +58,7 @@ Function GenOfficeAddToUserPath
   ReadRegStr $1 HKCU "Environment" "Path"
   StrLen $2 $1
   ; leave an already oversized PATH alone rather than truncate it
-  IntCmp $2 ${GENOFFICE_PATH_MAX} done 0 done
+  IntCmp $2 ${ALTERNATEOFFICE_PATH_MAX} done 0 done
   ${StrStr} $3 ";$1;" ";$0;"
   StrCmp $3 "" 0 done
   StrCmp $1 "" 0 +3

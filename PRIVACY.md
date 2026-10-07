@@ -1,9 +1,9 @@
-# GenOffice Privacy
+# AlternateOffice Privacy
 
 Last updated: August 26, 2026
 
-GenOffice opens, edits, and saves documents locally. Document editing does not
-upload files to GenOffice. AI features require a network connection and send
+AlternateOffice opens, edits, and saves documents locally. Document editing does not
+upload files to AlternateOffice. AI features require a network connection and send
 requests only when you use them.
 
 ## Usage analytics
@@ -51,12 +51,12 @@ email address.
 Events are sent to Google Analytics 4 using the Measurement Protocol over
 HTTPS. As the HTTPS recipient, Google necessarily sees the connection's public
 IP address and transport metadata, and may use them for coarse geolocation and
-security or spam-abuse processing. GenOffice does not add an IP address to the
+security or spam-abuse processing. AlternateOffice does not add an IP address to the
 event payload.
 
 ## Data not collected by analytics
 
-GenOffice analytics never sends:
+AlternateOffice analytics never sends:
 
 - document content
 - file names

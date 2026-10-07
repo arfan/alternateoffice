@@ -1,9 +1,9 @@
-import type { AiPanelPrefs } from '@genoffice/ui'
+import type { AiPanelPrefs } from '@alternateoffice/ui'
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import type { IpcRendererEvent } from 'electron'
-import type { RenderSlide } from '@genoffice/pptx-render'
-import type { ProjectApi } from '@genoffice/project-store'
-import { installDropOpenBridge } from '@genoffice/electron-utils/drop-open'
+import type { RenderSlide } from '@alternateoffice/pptx-render'
+import type { ProjectApi } from '@alternateoffice/project-store'
+import { installDropOpenBridge } from '@alternateoffice/electron-utils/drop-open'
 import type {
   AddChartOp,
   AddElementOp,

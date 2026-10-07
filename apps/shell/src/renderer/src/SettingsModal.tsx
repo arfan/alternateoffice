@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Dropdown } from '@genoffice/ui'
+import { Dropdown } from '@alternateoffice/ui'
 import type { DocTheme, UiTheme } from '../../shared/home-api'
 import { useI18n, type StringKey } from './locale'
 import './settings.css'
@@ -142,7 +142,7 @@ export function SettingsModal({ onClose, target }: SettingsModalProps) {
             ) : (
               <>
                 <h3 className="set-pane-title">{t('setSecAbout')}</h3>
-                <p className="set-field-desc">GenOffice</p>
+                <p className="set-field-desc">AlternateOffice</p>
                 {appVersion && (
                   <p className="set-field-desc">
                     {t('versionLabel')}: {appVersion}

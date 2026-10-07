@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import type { SectionInfo } from '@genoffice/docx-engine'
+import type { SectionInfo } from '@alternateoffice/docx-engine'
 import {
   type SliceOutputs,
   appendEndnotesBlock,
@@ -683,7 +683,7 @@ describe('sectionWidthSpecs — differing-width sections wrap at their own conte
     expect(specs[1].widthPx).toBeCloseTo(((11906 - 1701 - 1417) / 1440) * 96, 1)
   })
 
-  it('pages narrower than the widest section are centered on the shared paper (genoffice#246)', () => {
+  it('pages narrower than the widest section are centered on the shared paper (alternateoffice#246)', () => {
     // portrait pages in a document with a landscape section: the canvas paper is
     // the landscape width, so every portrait block carries the centering offset
     const landscape = sec({ pageWidth: 16838, pageHeight: 11906, orientation: 'landscape' })
@@ -2533,7 +2533,7 @@ describe('fillLineBoxes — keepNext chain anchors', () => {
   ]
 
   it('keeps lines apart when tall glyph boxes overlap the next line (KR 1.3029 pitch)', () => {
-    // GenOffice Sans KR content area 1.448em under a 1.3029 line: each rect
+    // AlternateOffice Sans KR content area 1.448em under a 1.3029 line: each rect
     // runs 2.35px into the next line, so a fixed 1px tolerance merged whole
     // paragraphs into one line and made them atomic at page bottoms
     const el = document.createElement('p')

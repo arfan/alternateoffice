@@ -13,8 +13,8 @@ import {
   mergeCells,
   splitCell,
 } from '@tiptap/pm/tables'
-import { platformShortcuts } from '@genoffice/i18n'
-import type { TextboxDisplay } from '@genoffice/docx-engine'
+import { platformShortcuts } from '@alternateoffice/i18n'
+import type { TextboxDisplay } from '@alternateoffice/docx-engine'
 
 import { useI18n, type StringKey } from '../i18n/locale'
 import { wordRangeAtCaret } from '../editor/comments'

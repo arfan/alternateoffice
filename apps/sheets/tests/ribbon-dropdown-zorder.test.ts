@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 /**
- * Regression pin for the ribbon-header z-order lift (genoffice#1767).
+ * Regression pin for the ribbon-header z-order lift (alternateoffice#1767).
  *
  * .excel-header is z-index: 10, so it opens a stacking context and a ribbon
  * dropdown popover's own z-index is trapped inside it, painting under the
@@ -75,7 +75,7 @@ beforeAll(() => {
 afterEach(async () => {
   if (root) await act(async () => root?.unmount())
   root = null
-  document.documentElement.classList.remove('genoffice-popover-open')
+  document.documentElement.classList.remove('alternateoffice-popover-open')
   document.body.innerHTML = ''
 })
 
@@ -158,7 +158,7 @@ describe('ribbon header z-order lift', () => {
     expect(header().contains(pop)).toBe(false)
     // Premise: the real useDismissablePopover inside the dialog is what puts
     // the global class on <html> — the condition the old rule matched on.
-    expect(document.documentElement.classList.contains('genoffice-popover-open')).toBe(true)
+    expect(document.documentElement.classList.contains('alternateoffice-popover-open')).toBe(true)
 
     expect(isLifted(header())).toBe(false)
   })

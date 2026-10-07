@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build GenOffice Poppins from upstream Poppins, metrics untouched.
+"""Build AlternateOffice Poppins from upstream Poppins, metrics untouched.
 
 Poppins is an M365 cloud font: Word downloads the real face and lays out with
 its metrics (hhea = typo = 1.500em line box, geometric-round advances — Word
@@ -24,7 +24,7 @@ from fontTools.subset import Options, Subsetter
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.woff2 import WOFF2FlavorData
 
-FAMILY = "GenOffice Poppins"
+FAMILY = "AlternateOffice Poppins"
 PS_FAMILY = "GenOfficePoppins"
 OUT_DIR = "apps/docs/src/renderer/fonts"
 

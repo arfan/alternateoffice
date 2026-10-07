@@ -39,7 +39,7 @@ it('shows General controls, switches to About, and updates the save directory', 
   expect(pane().textContent).toContain('C:/Office')
   const tabs = host.querySelectorAll<HTMLButtonElement>('.set-nav-item')
   await act(async () => tabs[1].click())
-  expect(pane().textContent).toContain('GenOffice')
+  expect(pane().textContent).toContain('AlternateOffice')
   expect(pane().textContent).toContain('0.11.0')
   await act(async () => tabs[0].click())
   expect(pane().textContent).toContain('Language')

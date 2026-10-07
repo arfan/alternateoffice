@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { defaultAiSettings } from '@genoffice/ai-provider'
+import { defaultAiSettings } from '@alternateoffice/ai-provider'
 import { imageSearch, webSearch } from '../src/index'
 import { searchOptionsFromSettings, testSearchProvider } from '../src/search-tools'
 
@@ -9,7 +9,7 @@ const webResponse = () =>
   Response.json({
     results: [
       {
-        title: 'GenOffice',
+        title: 'AlternateOffice',
         link: 'https://genoffice.ai/',
         description: 'A free, open-source office suite.',
       },
@@ -41,7 +41,7 @@ describe('Serply web search', () => {
   it('sends a GET with the key header and maps results[].description', async () => {
     const fetch = vi.fn<typeof globalThis.fetch>(async () => webResponse())
     vi.stubGlobal('fetch', fetch)
-    const r = await webSearch('genoffice', 5, {
+    const r = await webSearch('alternateoffice', 5, {
       useGsk: false,
       serplyKey: 'user-key',
       serperKey: 'serper-key',
@@ -50,7 +50,7 @@ describe('Serply web search', () => {
     expect(r).toEqual({
       results: [
         {
-          title: 'GenOffice',
+          title: 'AlternateOffice',
           url: 'https://genoffice.ai/',
           snippet: 'A free, open-source office suite.',
         },
@@ -62,10 +62,10 @@ describe('Serply web search', () => {
     const [url, init] = fetch.mock.calls[0]!
     const parsed = new URL(String(url))
     expect(`${parsed.origin}${parsed.pathname}`).toBe(webEndpoint)
-    expect(parsed.searchParams.get('q')).toBe('genoffice')
+    expect(parsed.searchParams.get('q')).toBe('alternateoffice')
     expect(parsed.searchParams.get('num')).toBe('5')
     expect(init?.method).toBeUndefined()
-    expect(init?.headers).toEqual({ 'X-Api-Key': 'user-key', 'User-Agent': 'genoffice' })
+    expect(init?.headers).toEqual({ 'X-Api-Key': 'user-key', 'User-Agent': 'alternateoffice' })
   })
 
   it('reads SERPLY_API_KEY and caps the mapped results at maxResults', async () => {
@@ -74,7 +74,7 @@ describe('Serply web search', () => {
       'fetch',
       vi.fn<typeof globalThis.fetch>(async () => webResponse()),
     )
-    const r = await webSearch('genoffice', 1)
+    const r = await webSearch('alternateoffice', 1)
     expect(r.method).toBe('serply')
     expect(r.results.map((x) => x.url)).toEqual(['https://genoffice.ai/'])
   })
@@ -92,7 +92,7 @@ describe('Serply web search', () => {
         return fallback()
       }),
     )
-    const r = await webSearch('genoffice', 3, {
+    const r = await webSearch('alternateoffice', 3, {
       useGsk: false,
       serplyKey: 'bad-key',
       prefer: 'serply',

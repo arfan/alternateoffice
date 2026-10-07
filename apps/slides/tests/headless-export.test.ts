@@ -56,12 +56,12 @@ describe('waitForDeckSettled', () => {
   })
 
   it('waits for the private Office fonts to finish registering', async () => {
-    window.__genofficeDocFontsSynced = false
-    setTimeout(() => (window.__genofficeDocFontsSynced = true), 10)
+    window.__alternateofficeDocFontsSynced = false
+    setTimeout(() => (window.__alternateofficeDocFontsSynced = true), 10)
     const t0 = Date.now()
     await waitForDeckSettled(deck, fast)
     expect(Date.now() - t0).toBeGreaterThanOrEqual(8)
-    delete window.__genofficeDocFontsSynced
+    delete window.__alternateofficeDocFontsSynced
   })
 })
 

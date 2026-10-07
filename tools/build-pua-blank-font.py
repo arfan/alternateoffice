@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build GenOffice PUA Blank: every BMP Private Use codepoint maps to one
+"""Build AlternateOffice PUA Blank: every BMP Private Use codepoint maps to one
 blank 1em glyph.
 
 Chromium never system-falls-back for PUA characters: an unmapped PUA
@@ -20,7 +20,7 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.ttLib.woff2 import WOFF2FlavorData
 
 DEFAULT_OUT = "apps/docs/src/renderer/fonts/GenOfficePUABlank.woff2"
-FAMILY = "GenOffice PUA Blank"
+FAMILY = "AlternateOffice PUA Blank"
 UPM = 1000
 
 

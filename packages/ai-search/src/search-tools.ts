@@ -11,7 +11,7 @@ import {
   cloudToolsEnabled,
   type AiSearchProviderId,
   type AiSettings,
-} from '@genoffice/ai-provider'
+} from '@alternateoffice/ai-provider'
 import { imageSearch, webSearch, type SearchOptions } from './index'
 import { readAiSettingsFile } from './media-tools'
 
@@ -54,7 +54,7 @@ export async function testSearchProvider(
     firecrawlKey: provider === 'firecrawl' ? apiKey : '',
     prefer: provider,
   }
-  const r = await webSearch('GenOffice', 1, options)
+  const r = await webSearch('AlternateOffice', 1, options)
   if (r.method === provider) return { ok: true }
   return {
     ok: false,

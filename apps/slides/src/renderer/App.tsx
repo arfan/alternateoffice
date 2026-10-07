@@ -8,7 +8,7 @@ import type {
   ChartRenderNode,
   PictureRenderNode,
   TableRenderNode,
-} from '@genoffice/pptx-render'
+} from '@alternateoffice/pptx-render'
 import { handleSlidesControl, type ControlRequest } from './control'
 import type {
   AiSettings,
@@ -97,7 +97,7 @@ import {
   type AiScopeQuoteData,
   type WordArtPreset,
   rememberAiPanelOpen,
-} from '@genoffice/ui'
+} from '@alternateoffice/ui'
 import type { ChartPresetDef, IconDef, SmartArtDef } from './insert-presets'
 import { GensparkMark, IconAiBeautify, IconAiFactCheck, IconAiImage } from './components/icons'
 import { ToastHost } from './components/toast'
@@ -3116,9 +3116,9 @@ export function App() {
 
   const _fileName = slide ? path?.split('/').pop() || t('appUntitledPresentation') : undefined
 
-  // genoffice CLI (`open --slide/--el`, `selection`): the shell evaluates this hook
+  // alternateoffice CLI (`open --slide/--el`, `selection`): the shell evaluates this hook
   useEffect(() => {
-    ;(window as unknown as Record<string, unknown>).__genofficeControl = (req: ControlRequest) =>
+    ;(window as unknown as Record<string, unknown>).__alternateofficeControl = (req: ControlRequest) =>
       handleSlidesControl(req, {
         slides,
         path,

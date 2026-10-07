@@ -1,32 +1,32 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // the docs/markdown editor modules are typed against the DOM even though genoffice runs them under jsdom
+    // the docs/markdown editor modules are typed against the DOM even though alternateoffice runs them under jsdom
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
     "types": ["node"],
     // resolve sibling source packages by path (worktree-safe, see pdf2docx/tsconfig.json)
     "paths": {
-      "@genoffice/docx-engine": ["../docx-engine/src/index.ts"],
-      "@genoffice/pptx-engine": ["../pptx-engine/src/index.ts"],
-      "@genoffice/pdf2docx": ["../pdf2docx/src/index.ts"],
-      "@genoffice/pptx-ops": ["../pptx-ops/src/index.ts"],
-      "@genoffice/pptx-render": ["../pptx-render/src/index.ts"],
-      "@genoffice/pipelines/slides": ["../pipelines/src/slides/index.ts"],
-      "@genoffice/pptx-ops/op-docs": ["../pptx-ops/src/op-docs.ts"],
-      "@genoffice/pptx-ops/font-size": ["../pptx-ops/src/font-size.ts"],
-      "@genoffice/xlsx-gateway/*": ["../xlsx-gateway/src/*"],
-      "@genoffice/font-metrics": ["../font-metrics/src/index.ts"],
-      "@genoffice/electron-utils": ["../electron-utils/src/index.ts"],
-      "@genoffice/electron-utils/*": ["../electron-utils/src/*"],
-      "@genoffice/ai-search": ["../ai-search/src/index.ts"],
-      "@genoffice/ai-provider": ["../ai-provider/src/index.ts"],
-      "@genoffice/ai-provider/browser": ["../ai-provider/src/browser.ts"],
-      "@genoffice/i18n": ["../i18n/src/index.ts"],
-      "@genoffice/ui": ["../ui/src/index.ts"]
+      "@alternateoffice/docx-engine": ["../docx-engine/src/index.ts"],
+      "@alternateoffice/pptx-engine": ["../pptx-engine/src/index.ts"],
+      "@alternateoffice/pdf2docx": ["../pdf2docx/src/index.ts"],
+      "@alternateoffice/pptx-ops": ["../pptx-ops/src/index.ts"],
+      "@alternateoffice/pptx-render": ["../pptx-render/src/index.ts"],
+      "@alternateoffice/pipelines/slides": ["../pipelines/src/slides/index.ts"],
+      "@alternateoffice/pptx-ops/op-docs": ["../pptx-ops/src/op-docs.ts"],
+      "@alternateoffice/pptx-ops/font-size": ["../pptx-ops/src/font-size.ts"],
+      "@alternateoffice/xlsx-gateway/*": ["../xlsx-gateway/src/*"],
+      "@alternateoffice/font-metrics": ["../font-metrics/src/index.ts"],
+      "@alternateoffice/electron-utils": ["../electron-utils/src/index.ts"],
+      "@alternateoffice/electron-utils/*": ["../electron-utils/src/*"],
+      "@alternateoffice/ai-search": ["../ai-search/src/index.ts"],
+      "@alternateoffice/ai-provider": ["../ai-provider/src/index.ts"],
+      "@alternateoffice/ai-provider/browser": ["../ai-provider/src/browser.ts"],
+      "@alternateoffice/i18n": ["../i18n/src/index.ts"],
+      "@alternateoffice/ui": ["../ui/src/index.ts"]
     }
   },
-  // ambient declarations travel with the sources genoffice reuses: package module shims and the
+  // ambient declarations travel with the sources alternateoffice reuses: package module shims and the
   // renderer window globals (window.desktop / window.markdownApi) the editor modules reference
   "include": [
     "src",

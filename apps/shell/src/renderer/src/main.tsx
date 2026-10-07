@@ -1,14 +1,14 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { htmlDir, htmlLang } from '@genoffice/i18n'
+import { htmlDir, htmlLang } from '@alternateoffice/i18n'
 import { AppFrame } from './AppFrame'
 import { LocaleProvider } from './locale'
-import '@genoffice/ui/tokens.css'
-import '@genoffice/ui/screentip.css'
-import '@genoffice/ui/dropdown.css'
+import '@alternateoffice/ui/tokens.css'
+import '@alternateoffice/ui/screentip.css'
+import '@alternateoffice/ui/dropdown.css'
 import './home.css'
 import './tabbar.css'
-import { installScreenTips } from '@genoffice/ui'
+import { installScreenTips } from '@alternateoffice/ui'
 
 installScreenTips()
 

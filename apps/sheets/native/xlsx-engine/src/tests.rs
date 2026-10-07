@@ -1076,7 +1076,7 @@ fn opens_backslash_and_case_drifted_package() {
     assert_eq!(metadata.sheets[0].column_count, 2);
 }
 
-/// genoffice#196: a producer wrote every entry as `/xl/...`. The names never
+/// alternateoffice#196: a producer wrote every entry as `/xl/...`. The names never
 /// leave the archive, so they only need to stay inside the package root.
 #[test]
 fn opens_leading_slash_package() {
@@ -1525,7 +1525,7 @@ fn tint_matches_excel_shades() {
 }
 
 /// Built-in family rules, per the Excel calibration workbook
-/// (genoffice-sample/sheets/calib): totals bands, dk1-gray Medium 15-21
+/// (alternateoffice-sample/sheets/calib): totals bands, dk1-gray Medium 15-21
 /// stripes, tinted Medium 22-28, solid Dark bodies, paired Dark 8-11.
 #[test]
 fn builtin_palette_matches_calibration() {
@@ -2343,7 +2343,7 @@ fn pivot_light_low_stripes_off_stays_styled() {
     assert!(json.contains("\"styled\":true"));
 }
 
-/// Excel-calibrated pivot palettes (genoffice-sample/sheets/calib/
+/// Excel-calibrated pivot palettes (alternateoffice-sample/sheets/calib/
 /// pivot-style-truths.json, Office 2007 theme): one representative per
 /// block of seven, exact RGB.
 #[test]
@@ -3965,7 +3965,7 @@ fn forge_declared_size(path: &Path, entry: &str, declared: u32) {
 /// The media cap used to consult only the central directory's declared size
 /// and then `read_to_end` the rest, so it bounded nothing: a part claiming a
 /// few bytes inflated to whatever the deflate stream carried and the whole
-/// payload landed in one allocation. `@genoffice/zip-gate` closes the same gap
+/// payload landed in one allocation. `@alternateoffice/zip-gate` closes the same gap
 /// for the docx/pptx hosts by inflating one byte past the claim (#781); the
 /// sidecar reads the entry itself, so it has to hold the same line here.
 #[test]

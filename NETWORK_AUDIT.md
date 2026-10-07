@@ -30,7 +30,7 @@ SQLite/indexer result order directly and has no remote or model fallback.
 Search runtime source (excluding tests, fixtures, schemas, and documentation)
 for `fetch(`, `axios`, `WebSocket`, `EventSource`, provider SDK imports,
 `GSK_`, `SERPER_`, `SERPLY_`, `TAVILY_`, `PARALLEL_`, and
-`GENOFFICE_CLOUD_SLIDE`. Every remaining result must have a local Office
+`ALTERNATEOFFICE_CLOUD_SLIDE`. Every remaining result must have a local Office
 purpose, an explicit user action, or a documented packaging-only purpose.
 
 The final local editing path must not require DNS, login, an API key, or a

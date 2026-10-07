@@ -1,4 +1,4 @@
-import type { NoteProps } from '@genoffice/docx-engine'
+import type { NoteProps } from '@alternateoffice/docx-engine'
 
 export type NoteKind = 'footnote' | 'endnote'
 

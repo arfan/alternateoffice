@@ -11,7 +11,7 @@ import { advanceEm, readWoff2 } from './helpers/woff2-metrics'
 const FONTS = join(__dirname, '../src/renderer/fonts')
 const tamil = readWoff2(join(FONTS, 'GenOfficeTamil-Regular.woff2'))
 
-describe('GenOffice Tamil (Latha-normalized)', () => {
+describe('AlternateOffice Tamil (Latha-normalized)', () => {
   it('space and digits match Latha', () => {
     expect(advanceEm(tamil, 0x20)).toBeCloseTo(0.578, 3)
     for (let cp = 0x30; cp <= 0x39; cp++) {

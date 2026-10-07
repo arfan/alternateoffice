@@ -15,8 +15,8 @@ import {
   parseDocx,
   saveDocx,
   type TextboxDisplay,
-} from '@genoffice/docx-engine'
-import { WORDART_PRESETS, wordArtSolidColor, type WordArtPreset } from '@genoffice/ui'
+} from '@alternateoffice/docx-engine'
+import { WORDART_PRESETS, wordArtSolidColor, type WordArtPreset } from '@alternateoffice/ui'
 import { buildDocx } from '../../../packages/docx-engine/tests/helpers/build-docx'
 import { blocksToPmDoc, pmDocToSavePlan, type PmNode } from '../src/renderer/editor/convert'
 import { editorExtensions } from '../src/renderer/editor/extensions'

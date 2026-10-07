@@ -1,7 +1,7 @@
 /** Home tab of the slides ribbon. Extracted from Ribbon.tsx. */
 import { useState } from 'react'
-import { platformShortcuts } from '@genoffice/i18n'
-import { ColorPicker, isSymbolFontFamily, partitionFontFamilies } from '@genoffice/ui'
+import { platformShortcuts } from '@alternateoffice/i18n'
+import { ColorPicker, isSymbolFontFamily, partitionFontFamilies } from '@alternateoffice/ui'
 import { saveEditSelection } from '../TextEditOverlay'
 import { armColorInput } from '../color-input'
 import { displayFontFamily } from '../konva-adapter'

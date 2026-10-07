@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 // The real guard, not a mirror: isAllowedAuthUrl is exported so these pins
 // fail if the predicate ever drifts (review point 2).
-import { isAllowedAuthUrl, startGenofficeLogin } from '../src/genoffice-auth'
+import { isAllowedAuthUrl, startGenofficeLogin } from '../src/alternateoffice-auth'
 
 describe('isAllowedAuthUrl', () => {
   const BASE = 'https://www.genspark.ai'

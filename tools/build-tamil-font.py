@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build GenOffice Tamil from upstream Noto Sans Tamil, hmtx-normalized to Latha.
+"""Build AlternateOffice Tamil from upstream Noto Sans Tamil, hmtx-normalized to Latha.
 
 Word substitutes missing Tamil families (Latha/Vijaya/Noto Sans Tamil...) with
 Latha; macOS has no Latha and Chromium's Tamil fallback (Tamil Sangam MN) is
@@ -24,7 +24,7 @@ from fontTools.ttLib import TTFont
 from fontTools.ttLib.woff2 import WOFF2FlavorData
 
 DEFAULT_OUT = "apps/docs/src/renderer/fonts/GenOfficeTamil-Regular.woff2"
-FAMILY = "GenOffice Tamil"
+FAMILY = "AlternateOffice Tamil"
 
 # ord -> advance in 1/1000 em, measured from Word's latha.ttf (2048 upm).
 # Latha has no A-Z/a-z overlap with Noto Sans Tamil (Noto ships no Latin

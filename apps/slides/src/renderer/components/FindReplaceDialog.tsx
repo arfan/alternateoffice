@@ -13,7 +13,7 @@ import type {
   RenderTextLayout,
   ShapeRenderNode,
   TableRenderNode,
-} from '@genoffice/pptx-render'
+} from '@alternateoffice/pptx-render'
 
 export interface FindMatch {
   slideIndex: number

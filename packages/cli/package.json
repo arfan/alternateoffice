@@ -1,10 +1,10 @@
 {
-  "name": "@genoffice/cli",
+  "name": "@alternateoffice/cli",
   "version": "0.10.0",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
-  "description": "genoffice: the GenOffice command line (create, convert, read, edit and render documents) built on the same engines as the app; runs headless on the app's bundled Node runtime",
+  "description": "alternateoffice: the AlternateOffice command line (create, convert, read, edit and render documents) built on the same engines as the app; runs headless on the app's bundled Node runtime",
   "exports": {
     ".": "./src/index.ts",
     "./install": "./src/install.ts",
@@ -13,7 +13,7 @@
     "./control-protocol": "./src/control-protocol.ts"
   },
   "bin": {
-    "genoffice": "./bin/genoffice"
+    "alternateoffice": "./bin/alternateoffice"
   },
   "scripts": {
     "build": "node build.mjs && node collect-deps.mjs",
@@ -22,15 +22,15 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@genoffice/ai-provider": "*",
-    "@genoffice/ai-search": "*",
-    "@genoffice/docx-engine": "*",
-    "@genoffice/pdf2docx": "*",
-    "@genoffice/pipelines": "*",
-    "@genoffice/pptx-engine": "*",
-    "@genoffice/pptx-ops": "*",
-    "@genoffice/pptx-render": "*",
-    "@genoffice/xlsx-gateway": "*",
+    "@alternateoffice/ai-provider": "*",
+    "@alternateoffice/ai-search": "*",
+    "@alternateoffice/docx-engine": "*",
+    "@alternateoffice/pdf2docx": "*",
+    "@alternateoffice/pipelines": "*",
+    "@alternateoffice/pptx-engine": "*",
+    "@alternateoffice/pptx-ops": "*",
+    "@alternateoffice/pptx-render": "*",
+    "@alternateoffice/xlsx-gateway": "*",
     "@modelcontextprotocol/sdk": "^1.30.0",
     "@tiptap/core": "3.31.0",
     "jsdom": "^28.0.0",

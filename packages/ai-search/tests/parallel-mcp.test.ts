@@ -1,10 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { defaultAiSettings } from '@genoffice/ai-provider'
+import { defaultAiSettings } from '@alternateoffice/ai-provider'
 import { webSearch } from '../src/index'
 import { searchOptionsFromSettings, testSearchProvider } from '../src/search-tools'
 
 const endpoint = 'https://search.parallel.ai/mcp'
-const source = { title: 'GenOffice', url: 'https://example.com', excerpts: ['First.', 'Second.'] }
+const source = { title: 'AlternateOffice', url: 'https://example.com', excerpts: ['First.', 'Second.'] }
 const payload = { results: [source, { ...source, title: 'Extra' }] }
 const fallback = () =>
   new Response('<a class="result__a" href="https://fallback.example.com">Fallback</a>')
@@ -69,7 +69,7 @@ describe('Parallel free Search MCP', () => {
     })
     expect(r).toEqual({
       method: 'parallel',
-      results: [{ title: 'GenOffice', url: 'https://example.com', snippet: 'First.\nSecond.' }],
+      results: [{ title: 'AlternateOffice', url: 'https://example.com', snippet: 'First.\nSecond.' }],
     })
     expect(requests.find((r) => r.body.method === 'tools/call')?.body.params).toEqual({
       name: 'web_search',

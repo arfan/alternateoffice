@@ -9,24 +9,24 @@ const local = (rel: string) => fileURLToPath(new URL(rel, import.meta.url))
 export default defineConfig({
   resolve: {
     alias: {
-      '@genoffice/docx-engine/lazy-media': local('../../packages/docx-engine/src/lazy-media.ts'),
-      '@genoffice/docx-engine': local('../../packages/docx-engine/src/index.ts'),
-      '@genoffice/font-metrics': local('../../packages/font-metrics/src/index.ts'),
+      '@alternateoffice/docx-engine/lazy-media': local('../../packages/docx-engine/src/lazy-media.ts'),
+      '@alternateoffice/docx-engine': local('../../packages/docx-engine/src/index.ts'),
+      '@alternateoffice/font-metrics': local('../../packages/font-metrics/src/index.ts'),
       // subpath before the bare name: string aliases are prefix replacements
-      '@genoffice/electron-utils/headless-export': local(
+      '@alternateoffice/electron-utils/headless-export': local(
         '../../packages/electron-utils/src/headless-export.ts',
       ),
-      '@genoffice/electron-utils/atomic-write': local(
+      '@alternateoffice/electron-utils/atomic-write': local(
         '../../packages/electron-utils/src/atomic-write.ts',
       ),
-      '@genoffice/electron-utils/safe-external-url': local(
+      '@alternateoffice/electron-utils/safe-external-url': local(
         '../../packages/electron-utils/src/safe-external-url.ts',
       ),
-      '@genoffice/electron-utils': local('../../packages/electron-utils/src/index.ts'),
-      '@genoffice/ai-provider/browser': local('../../packages/ai-provider/src/browser.ts'),
-      '@genoffice/ai-provider': local('../../packages/ai-provider/src/index.ts'),
-      '@genoffice/i18n': local('../../packages/i18n/src/index.ts'),
-      '@genoffice/ui': local('../../packages/ui/src/index.ts'),
+      '@alternateoffice/electron-utils': local('../../packages/electron-utils/src/index.ts'),
+      '@alternateoffice/ai-provider/browser': local('../../packages/ai-provider/src/browser.ts'),
+      '@alternateoffice/ai-provider': local('../../packages/ai-provider/src/index.ts'),
+      '@alternateoffice/i18n': local('../../packages/i18n/src/index.ts'),
+      '@alternateoffice/ui': local('../../packages/ui/src/index.ts'),
     },
   },
   test: {

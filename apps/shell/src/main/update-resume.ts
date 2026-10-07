@@ -1,4 +1,4 @@
-// Range-resumable installer downloads for the auto-updater (genoffice#1777):
+// Range-resumable installer downloads for the auto-updater (alternateoffice#1777):
 // electron-updater writes the installer with a fresh createWriteStream and no
 // Range header, so every retry after a dropped connection starts from byte 0 —
 // on a slow link a large NSIS/zip that keeps dying at 90% never lands.

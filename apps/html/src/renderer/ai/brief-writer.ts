@@ -1,4 +1,4 @@
-import { streamText, type AgentMessage, type AgentTransport } from '@genoffice/agent-core'
+import { streamText, type AgentMessage, type AgentTransport } from '@alternateoffice/agent-core'
 import type { PlanMode } from './tools'
 
 /**
@@ -26,7 +26,7 @@ export type BriefPlanResult =
   { ok: true; raw: Record<string, unknown> } | { ok: false; error: string }
 
 const SYSTEM = [
-  'You are the brief writer of GenOffice HTML, a design-first editor for single-file HTML pages. From the conversation transcript you receive, draft the brief the user will confirm before the system writes the page.',
+  'You are the brief writer of AlternateOffice HTML, a design-first editor for single-file HTML pages. From the conversation transcript you receive, draft the brief the user will confirm before the system writes the page.',
   '',
   '## The brief',
   '- core_hook: one sentence with tension, ideally a number or contrast.',

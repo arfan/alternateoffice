@@ -1,6 +1,6 @@
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { analyzeMediaTool, localMediaRoots } from '@genoffice/ai-search'
+import { analyzeMediaTool, localMediaRoots } from '@alternateoffice/ai-search'
 import { flagString } from '../args'
 import { aiSettingsPath, prepareCloud } from '../cloud'
 import { resolveInput } from '../fs'
@@ -41,7 +41,7 @@ export const mediaCommand: CommandDef = {
     if (r.text === undefined)
       throw new CliError(EXIT.app, r.error ?? 'media analysis failed', undefined, {
         suggestion:
-          'retry once later; if it persists, check the Genspark login in the GenOffice app or configure a BYOK analysis provider under Settings (AI Media)',
+          'retry once later; if it persists, check the Genspark login in the AlternateOffice app or configure a BYOK analysis provider under Settings (AI Media)',
       })
     const failure = providerFailure(r.text)
     if (failure) throw new CliError(EXIT.conversion, `media analysis failed: ${failure}`)

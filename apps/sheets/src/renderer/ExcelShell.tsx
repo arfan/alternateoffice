@@ -1,6 +1,6 @@
 import type { IFunctionInfo } from '@univerjs/engine-formula'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { platformShortcuts } from '@genoffice/i18n'
+import { platformShortcuts } from '@alternateoffice/i18n'
 import {
   Dropdown,
   SHAPE_GALLERY_GROUPS,
@@ -8,7 +8,7 @@ import {
   useDismissablePopover,
   useRibbonCollapse,
   rememberAiPanelOpen,
-} from '@genoffice/ui'
+} from '@alternateoffice/ui'
 
 import {
   BorderAllIcon,
@@ -53,8 +53,8 @@ import {
 import { isModalOpen, resolveGlobalShortcut } from './global-shortcuts'
 import { stepFontSize } from './font-size-ladder'
 
-import type { ChartSeriesVisualState } from '@genoffice/xlsx-gateway/domain/chart-visual'
-import type { ChangePlan } from '@genoffice/xlsx-gateway/domain/workbook.types'
+import type { ChartSeriesVisualState } from '@alternateoffice/xlsx-gateway/domain/chart-visual'
+import type { ChangePlan } from '@alternateoffice/xlsx-gateway/domain/workbook.types'
 import type { AttachmentMeta } from '../shared/desktop-api'
 import { AiChatPanel, type AiChatMessage } from './ai/AiChatPanel'
 import type { SelectionAskAnchor } from './ai/selection-ask'

@@ -8,19 +8,19 @@
     // node_modules would otherwise typecheck against another checkout) —
     // same mapping as packages/pdf2docx/tsconfig.json
     "paths": {
-      "@genoffice/docx-engine": ["../../packages/docx-engine/src/index.ts"],
-      "@genoffice/font-metrics": ["../../packages/font-metrics/src/index.ts"],
-      "@genoffice/electron-utils/headless-export": [
+      "@alternateoffice/docx-engine": ["../../packages/docx-engine/src/index.ts"],
+      "@alternateoffice/font-metrics": ["../../packages/font-metrics/src/index.ts"],
+      "@alternateoffice/electron-utils/headless-export": [
         "../../packages/electron-utils/src/headless-export.ts"
       ],
-      "@genoffice/electron-utils": ["../../packages/electron-utils/src/index.ts"],
-      "@genoffice/ai-provider": ["../../packages/ai-provider/src/index.ts"],
-      "@genoffice/i18n": ["../../packages/i18n/src/index.ts"],
-      "@genoffice/ui": ["../../packages/ui/src/index.ts"],
-      "@genoffice/pptx-engine": ["../../packages/pptx-engine/src/index.ts"],
-      "@genoffice/cli/install": ["../../packages/cli/src/install.ts"],
-      "@genoffice/cli/agent-skills": ["../../packages/cli/src/agent-skills.ts"],
-      "@genoffice/cli/control-protocol": ["../../packages/cli/src/control-protocol.ts"]
+      "@alternateoffice/electron-utils": ["../../packages/electron-utils/src/index.ts"],
+      "@alternateoffice/ai-provider": ["../../packages/ai-provider/src/index.ts"],
+      "@alternateoffice/i18n": ["../../packages/i18n/src/index.ts"],
+      "@alternateoffice/ui": ["../../packages/ui/src/index.ts"],
+      "@alternateoffice/pptx-engine": ["../../packages/pptx-engine/src/index.ts"],
+      "@alternateoffice/cli/install": ["../../packages/cli/src/install.ts"],
+      "@alternateoffice/cli/agent-skills": ["../../packages/cli/src/agent-skills.ts"],
+      "@alternateoffice/cli/control-protocol": ["../../packages/cli/src/control-protocol.ts"]
     }
   },
   "include": [

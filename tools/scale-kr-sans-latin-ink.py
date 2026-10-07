@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scale GenOffice Sans KR Latin outlines to Malgun Gothic's ink boxes.
+"""Scale AlternateOffice Sans KR Latin outlines to Malgun Gothic's ink boxes.
 
 normalize-kr-sans-hmtx.py rewrote the Basic Latin advances to Malgun's values
 but left Noto's narrower outlines untouched, so wide-advance letters (M, W, &)

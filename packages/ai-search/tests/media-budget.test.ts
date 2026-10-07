@@ -31,7 +31,7 @@ function dataUrl(bytes: number, mime = 'image/png'): string {
 const TINY = { maxItems: 3, maxItemBytes: 64, maxTotalBytes: 128, concurrency: 2 }
 
 function writeSettings(mediaProvider: string): string {
-  const dir = mkdtempSync(join(tmpdir(), 'genoffice-media-budget-'))
+  const dir = mkdtempSync(join(tmpdir(), 'alternateoffice-media-budget-'))
   const path = join(dir, 'ai-settings.json')
   writeFileSync(
     path,
@@ -86,7 +86,7 @@ describe('loadMediaReferences budget', () => {
 
   it('rejects a total that only crosses the cap once the bytes have landed', async () => {
     // local files declare no encoded size, so only the running total can catch this
-    const dir = mkdtempSync(join(tmpdir(), 'genoffice-media-files-'))
+    const dir = mkdtempSync(join(tmpdir(), 'alternateoffice-media-files-'))
     const refs = Array.from({ length: 3 }, (_, i) => {
       const path = join(dir, `shot-${i}.png`)
       writeFileSync(path, Buffer.alloc(50, 1))

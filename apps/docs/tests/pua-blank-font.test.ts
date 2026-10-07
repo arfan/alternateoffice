@@ -10,7 +10,7 @@ import { advanceEm, readWoff2 } from './helpers/woff2-metrics'
 
 const font = readWoff2(join(__dirname, '../src/renderer/fonts/GenOfficePUABlank.woff2'))
 
-describe('GenOffice PUA Blank', () => {
+describe('AlternateOffice PUA Blank', () => {
   it('covers the whole BMP Private Use Area at a 1em advance', () => {
     for (const cp of [0xe000, 0xe200, 0xe202, 0xf0b7, 0xf8ff]) {
       expect(font.cmap.get(cp)).toBeDefined()

@@ -32,7 +32,7 @@ import type {
   ChartRenderNode,
   PictureRenderNode,
   GroupRenderNode,
-} from '@genoffice/pptx-render'
+} from '@alternateoffice/pptx-render'
 import { boxPivotProps, fillToKonva, isConnectorNode, isEditableText } from './konva-adapter'
 import { tableCellAtPoint, tableCellOverlayBox, tableLocalPointFromStage } from './table-hit'
 import { EDGE_GRIP_PX, isPromptPlaceholder, textHitAtPoint } from './text-hit-area'
@@ -477,10 +477,10 @@ interface Props {
  */
 export const CANVAS_BLEED = 160
 
-/* Screenshot-automation hook (fidelity-compare): window.__genofficeHidePhPrompts = true +
- * dispatching 'genoffice:hide-ph-prompts' hides empty-placeholder hints on the edit canvas. */
+/* Screenshot-automation hook (fidelity-compare): window.__alternateofficeHidePhPrompts = true +
+ * dispatching 'alternateoffice:hide-ph-prompts' hides empty-placeholder hints on the edit canvas. */
 const hidePhPromptsListeners = new Set<() => void>()
-window.addEventListener('genoffice:hide-ph-prompts', () => {
+window.addEventListener('alternateoffice:hide-ph-prompts', () => {
   for (const l of hidePhPromptsListeners) l()
 })
 const subscribeHidePhPrompts = (cb: () => void) => {
@@ -490,7 +490,7 @@ const subscribeHidePhPrompts = (cb: () => void) => {
   }
 }
 const getHidePhPrompts = () =>
-  !!(window as { __genofficeHidePhPrompts?: boolean }).__genofficeHidePhPrompts
+  !!(window as { __alternateofficeHidePhPrompts?: boolean }).__alternateofficeHidePhPrompts
 
 /** Default rotate-handle snapping: lock onto 45° multiples (Shift switches to 15° steps) */
 const ROTATION_SNAPS = [0, 45, 90, 135, 180, 225, 270, 315]

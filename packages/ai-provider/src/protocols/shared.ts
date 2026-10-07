@@ -1,4 +1,4 @@
-import type { AgentToolCall } from '@genoffice/agent-core'
+import type { AgentToolCall } from '@alternateoffice/agent-core'
 
 // ---- endpoint URL composition ----
 

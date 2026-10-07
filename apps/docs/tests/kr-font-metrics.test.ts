@@ -46,7 +46,7 @@ function primaryFontNames(font: ReturnType<typeof readWoff2>): Array<{
   return names
 }
 
-describe('GenOffice Sans KR (Malgun-normalized)', () => {
+describe('AlternateOffice Sans KR (Malgun-normalized)', () => {
   it('hangul syllables and compatibility jamo stay 1.0em', () => {
     for (const cp of [0xac00, 0xae4e, 0xd558, 0x3131]) {
       expect(advanceEm(sans, cp), `U+${cp.toString(16)}`).toBe(1)
@@ -88,7 +88,7 @@ describe('GenOffice Sans KR (Malgun-normalized)', () => {
   })
 })
 
-describe('GenOffice Serif KR (Batang-normalized)', () => {
+describe('AlternateOffice Serif KR (Batang-normalized)', () => {
   it('hangul 1.0em, digits 0.596em, space 0.333em', () => {
     expect(advanceEm(serif, 0xac00)).toBe(1)
     expect(advanceEm(serif, 0x3131)).toBe(1)
@@ -106,7 +106,7 @@ describe('GenOffice Serif KR (Batang-normalized)', () => {
   })
 })
 
-describe('GenOffice Che Latin KR (fixed-pitch half-width)', () => {
+describe('AlternateOffice Che Latin KR (fixed-pitch half-width)', () => {
   const che = readWoff2(join(FONTS, 'GenOfficeCheLatinKR.woff2'))
 
   it('every printable ASCII advance is exactly 0.5em (probe 2026-08-24: real -Che faces)', () => {
@@ -116,7 +116,7 @@ describe('GenOffice Che Latin KR (fixed-pitch half-width)', () => {
   })
 })
 
-describe('GenOffice Gothic KR (real source metrics, unmodified)', () => {
+describe('AlternateOffice Gothic KR (real source metrics, unmodified)', () => {
   const gothicKr = readWoff2(join(FONTS, 'GenOfficeGothicKR-Regular-subset.woff2'))
 
   it('keeps the M3 probe truth: hangul 0.94em, space 0.28em, digits 0.606em', () => {
@@ -140,7 +140,7 @@ describe('GenOffice Gothic KR (real source metrics, unmodified)', () => {
     for (const { nameId, value } of names) {
       expect(value, `name ID ${nameId}`).not.toMatch(/nanum/i)
     }
-    expect(names).toContainEqual({ nameId: 1, value: 'GenOffice Gothic KR' })
+    expect(names).toContainEqual({ nameId: 1, value: 'AlternateOffice Gothic KR' })
     expect(names).toContainEqual({ nameId: 6, value: 'GenOfficeGothicKR-Regular' })
   })
 })

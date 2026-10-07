@@ -8,11 +8,11 @@ import {
   type FindPanelStrings,
   type FindTarget,
   rememberAiPanelOpen,
-} from '@genoffice/ui'
+} from '@alternateoffice/ui'
 import {
   pollUntilReady,
   runHeadlessRendererExport,
-} from '@genoffice/electron-utils/headless-export'
+} from '@alternateoffice/electron-utils/headless-export'
 import { useI18n } from './i18n/locale'
 import { parseDocText, serializeDocText, type Envelope } from './document/envelope'
 import { SourceEditor, type CursorInfo, type SourceEditorHandle } from './source/SourceEditor'
@@ -37,7 +37,7 @@ import {
   type CanvasMode,
   type ViewMode,
 } from './components/Ribbon'
-import { CropDialog, CutoutDialog, type ImageDialogLabels } from '@genoffice/ui'
+import { CropDialog, CutoutDialog, type ImageDialogLabels } from '@alternateoffice/ui'
 import { FloatToolbar } from './components/FloatToolbar'
 import {
   insertOp,

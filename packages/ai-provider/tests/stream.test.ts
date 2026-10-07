@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { AgentMessage, AgentToolCall } from '@genoffice/agent-core'
+import type { AgentMessage, AgentToolCall } from '@alternateoffice/agent-core'
 import { AiCreditsError, sseLines, streamForProvider } from '../src/stream'
 import {
   MAX_RESPONSE_BODY_BYTES,
@@ -220,7 +220,7 @@ describe('streamForProvider: temperature policy', () => {
     expect(bodies[1].temperature).toBe(0.3)
   })
 
-  // issue genspark-ai/genoffice#147: every model in the OpenAI BYOK dropdown is GPT-5.x,
+  // issue genspark-ai/alternateoffice#147: every model in the OpenAI BYOK dropdown is GPT-5.x,
   // and api.openai.com 400s `max_tokens` for that family
   it('caps OpenAI via max_completion_tokens and other vendors via max_tokens', async () => {
     const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(okTurn()))
@@ -648,7 +648,7 @@ describe('streamForProvider: anthropic', () => {
 
   it('never sends an empty assistant content array when history has edits-only replies', async () => {
     // Prior empty terminal turns would map to content:[] and break follow-ups
-    // on Anthropic (genoffice#12 / #22 class of multi-turn failures).
+    // on Anthropic (alternateoffice#12 / #22 class of multi-turn failures).
     const fetchMock = vi
       .fn()
       .mockResolvedValue(
@@ -717,7 +717,7 @@ describe('streamForProvider: gemini', () => {
     expect(toolCalls[0]).toMatchObject({ name: 'set_cell', input: { a1: '42' } })
   })
 
-  it('flags array functionCall args as inputError (genoffice#1106)', async () => {
+  it('flags array functionCall args as inputError (alternateoffice#1106)', async () => {
     const body = sseStream([
       'data: {"candidates":[{"content":{"parts":[{"functionCall":{"name":"set_cell","args":[1,2]}}]},"finishReason":"STOP"}]}',
     ])
@@ -978,7 +978,7 @@ describe('streamForProvider: openai-compatible', () => {
     expect(toolCalls).toEqual([{ id: 'c1', name: 'replace', input: { x: 1 } }])
   })
 
-  it('turns non-object tool arguments into inputError instead of executing them (genoffice#1106)', async () => {
+  it('turns non-object tool arguments into inputError instead of executing them (alternateoffice#1106)', async () => {
     const body = sseStream([
       'data: {"choices":[{"delta":{"tool_calls":[{"index":0,"id":"c1","function":{"name":"replace","arguments":"null"}}]}}]}',
       'data: {"choices":[{"delta":{},"finish_reason":"tool_calls"}]}',
@@ -1391,7 +1391,7 @@ describe('streamForProvider: genspark', () => {
       expect(fetchMock).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
-          headers: expect.objectContaining({ 'X-Agent-Type': 'genoffice' }),
+          headers: expect.objectContaining({ 'X-Agent-Type': 'alternateoffice' }),
         }),
       )
     }
@@ -1804,7 +1804,7 @@ describe('jsonBodyInsteadOfSse', () => {
 })
 
 describe('parseToolInput', () => {
-  it('rejects non-object JSON through the inputError channel (genoffice#1106)', () => {
+  it('rejects non-object JSON through the inputError channel (alternateoffice#1106)', () => {
     for (const raw of ['null', '[]', '42', '"x"', 'true']) {
       const r = parseToolInput(raw)
       expect(r.input).toEqual({})

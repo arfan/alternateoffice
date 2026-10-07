@@ -3,22 +3,22 @@ import { join, resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { run, tempDir } from './helpers'
 
-const LAUNCHER = resolve(__dirname, '..', 'bin', 'genoffice')
+const LAUNCHER = resolve(__dirname, '..', 'bin', 'alternateoffice')
 
 function fakeMachine(agents: string[]) {
   const home = tempDir()
   for (const dot of agents) mkdirSync(join(home, dot), { recursive: true })
-  return { home, env: { GENOFFICE_HOME: home } as NodeJS.ProcessEnv }
+  return { home, env: { ALTERNATEOFFICE_HOME: home } as NodeJS.ProcessEnv }
 }
 
 const readJson = (path: string) => JSON.parse(readFileSync(path, 'utf-8'))
 
-describe('genoffice mcp list', () => {
-  it('shows every agent, detected or not, and whether genoffice is registered', async () => {
+describe('alternateoffice mcp list', () => {
+  it('shows every agent, detected or not, and whether alternateoffice is registered', async () => {
     const m = fakeMachine(['.cursor', '.gemini'])
     writeFileSync(
       join(m.home, '.gemini', 'settings.json'),
-      JSON.stringify({ mcpServers: { genoffice: { command: LAUNCHER, args: ['mcp'] } } }),
+      JSON.stringify({ mcpServers: { alternateoffice: { command: LAUNCHER, args: ['mcp'] } } }),
     )
     const r = await run(['mcp', 'list', '--json'], { env: m.env })
     expect(r.code).toBe(0)
@@ -44,7 +44,7 @@ describe('genoffice mcp list', () => {
   })
 })
 
-describe('genoffice mcp install', () => {
+describe('alternateoffice mcp install', () => {
   it('merges into an existing JSON config, keeping other servers, and is idempotent', async () => {
     const m = fakeMachine(['.cursor'])
     const file = join(m.home, '.cursor', 'mcp.json')
@@ -66,7 +66,7 @@ describe('genoffice mcp install', () => {
     expect(JSON.parse(text)).toEqual({
       mcpServers: {
         other: { url: 'https://x.test/mcp' },
-        genoffice: { type: 'stdio', command: LAUNCHER, args: ['mcp'] },
+        alternateoffice: { type: 'stdio', command: LAUNCHER, args: ['mcp'] },
       },
       theme: 'dark',
     })
@@ -82,7 +82,7 @@ describe('genoffice mcp install', () => {
     const r = await run(['mcp', 'install', 'windsurf', '--json'], { env: m.env })
     expect(r.code).toBe(0)
     expect(readJson(join(m.home, '.codeium', 'windsurf', 'mcp_config.json'))).toEqual({
-      mcpServers: { genoffice: { command: LAUNCHER, args: ['mcp'] } },
+      mcpServers: { alternateoffice: { command: LAUNCHER, args: ['mcp'] } },
     })
   })
 
@@ -107,14 +107,14 @@ describe('genoffice mcp install', () => {
 
     writeFileSync(
       file,
-      '[mcp_servers.genoffice]\ncommand = "/old/GenOffice.app/Contents/Resources/cli/genoffice"\nargs = ["mcp"]\n\n' +
+      '[mcp_servers.genoffice]\ncommand = "/old/AlternateOffice.app/Contents/Resources/cli/alternateoffice"\nargs = ["mcp"]\n\n' +
         '[mcp_servers.genoffice.env]\nFOO = "1"\n\n[mcp_servers.other]\ncommand = "npx"\n\n[projects."/tmp/x"]\ntrust_level = "trusted"\n',
     )
     const listed = await run(['mcp', 'list', '--json'], { env: m.env })
     expect(listed.json().detail.agents.find((a: any) => a.agent === 'codex')).toMatchObject({
       status: 'stale',
       registered: true,
-      command: '/old/GenOffice.app/Contents/Resources/cli/genoffice',
+      command: '/old/AlternateOffice.app/Contents/Resources/cli/alternateoffice',
     })
     const replaced = await run(['mcp', 'install', 'codex', '--json'], { env: m.env })
     expect(replaced.code).toBe(0)
@@ -129,7 +129,7 @@ describe('genoffice mcp install', () => {
     const m = fakeMachine(['.cursor', '.codex'])
     const file = join(m.home, '.cursor', 'mcp.json')
     const before = JSON.stringify({
-      mcpServers: { genoffice: { command: 'npx', args: ['other'] } },
+      mcpServers: { alternateoffice: { command: 'npx', args: ['other'] } },
     })
     writeFileSync(file, before)
     writeFileSync(
@@ -205,7 +205,7 @@ describe('genoffice mcp install', () => {
     expect(readJson(file)).toEqual({
       numStartups: 3,
       projects: { '/p': { mcpServers: {} } },
-      mcpServers: { genoffice: { type: 'stdio', command: LAUNCHER, args: ['mcp'] } },
+      mcpServers: { alternateoffice: { type: 'stdio', command: LAUNCHER, args: ['mcp'] } },
     })
 
     const custom = join(m.home, 'cc-config')
@@ -256,12 +256,12 @@ describe('genoffice mcp install', () => {
   })
 })
 
-describe('genoffice mcp install summaries', () => {
+describe('alternateoffice mcp install summaries', () => {
   it('says what blocked the batch instead of claiming no agent was detected', async () => {
     const m = fakeMachine(['.cursor', '.gemini'])
     writeFileSync(
       join(m.home, '.cursor', 'mcp.json'),
-      JSON.stringify({ mcpServers: { genoffice: { command: 'npx' } } }),
+      JSON.stringify({ mcpServers: { alternateoffice: { command: 'npx' } } }),
     )
     writeFileSync(join(m.home, '.gemini', 'settings.json'), '{ not json')
     const r = await run(['mcp', 'install', 'all', '--json'], { env: m.env })
@@ -293,7 +293,7 @@ describe('genoffice mcp install summaries', () => {
   })
 })
 
-describe('genoffice mcp with a symlinked config', () => {
+describe('alternateoffice mcp with a symlinked config', () => {
   it('writes through the link to its target and keeps the link', async () => {
     const m = fakeMachine(['.cursor', '.claude'])
     const store = join(m.home, 'dotfiles')
@@ -310,7 +310,7 @@ describe('genoffice mcp with a symlinked config', () => {
     expect(lstatSync(link).isSymbolicLink()).toBe(true)
     expect(readJson(target).mcpServers).toEqual({
       other: { command: 'x' },
-      genoffice: { type: 'stdio', command: LAUNCHER, args: ['mcp'] },
+      alternateoffice: { type: 'stdio', command: LAUNCHER, args: ['mcp'] },
     })
     expect(lstatSync(join(m.home, '.claude.json')).isSymbolicLink()).toBe(true)
     expect(readJson(claudeTarget).mcpServers.genoffice.command).toBe(LAUNCHER)
@@ -322,7 +322,7 @@ describe('genoffice mcp with a symlinked config', () => {
   })
 })
 
-describe('genoffice mcp with a symlinked config directory', () => {
+describe('alternateoffice mcp with a symlinked config directory', () => {
   it('follows a relative link from the real directory, not the lexical one', async () => {
     const m = fakeMachine([])
     const dotfiles = join(m.home, 'dotfiles')
@@ -343,12 +343,12 @@ describe('genoffice mcp with a symlinked config directory', () => {
   })
 })
 
-describe('genoffice mcp uninstall', () => {
+describe('alternateoffice mcp uninstall', () => {
   it('words refusals for removing, not writing', async () => {
     const m = fakeMachine(['.gemini', '.cursor'])
     writeFileSync(
       join(m.home, '.gemini', 'settings.json'),
-      JSON.stringify({ mcpServers: { genoffice: { command: 'npx' } } }),
+      JSON.stringify({ mcpServers: { alternateoffice: { command: 'npx' } } }),
     )
     writeFileSync(join(m.home, '.cursor', 'mcp.json'), '{ broken')
     const absent = await run(['mcp', 'uninstall', 'codex', '--json'], { env: m.env })
@@ -361,17 +361,17 @@ describe('genoffice mcp uninstall', () => {
     expect(occupied.json().suggestion).toBe('repeat with --force to remove the foreign entry')
     const manual = await run(['mcp', 'uninstall', 'cursor', '--json'], { env: m.env })
     expect(manual.code).toBe(2)
-    expect(manual.json().suggestion).toBe('remove the genoffice entry from the file yourself')
+    expect(manual.json().suggestion).toBe('remove the alternateoffice entry from the file yourself')
     expect(manual.json().detail.snippet).toBeUndefined()
     const all = await run(['mcp', 'uninstall', 'all', '--json'], { env: m.env })
     expect(all.json().warnings.map((w: any) => w.suggestion)).toEqual([
-      'remove the genoffice entry from the file yourself',
+      'remove the alternateoffice entry from the file yourself',
       'repeat with --force to remove the foreign entry',
     ])
     expect(all.json().warnings[0].message).toContain('remove the entry by hand')
   })
 
-  it('removes only the genoffice key and leaves the rest of the file', async () => {
+  it('removes only the alternateoffice key and leaves the rest of the file', async () => {
     const m = fakeMachine(['.cursor', '.codex'])
     const json = join(m.home, '.cursor', 'mcp.json')
     writeFileSync(
@@ -379,7 +379,7 @@ describe('genoffice mcp uninstall', () => {
       JSON.stringify({
         mcpServers: {
           other: { url: 'https://x.test/mcp' },
-          genoffice: { command: LAUNCHER, args: ['mcp'] },
+          alternateoffice: { command: LAUNCHER, args: ['mcp'] },
         },
         theme: 'dark',
       }),
@@ -413,7 +413,7 @@ describe('genoffice mcp uninstall', () => {
   it('does not remove an entry that starts another program unless --force', async () => {
     const m = fakeMachine(['.gemini'])
     const file = join(m.home, '.gemini', 'settings.json')
-    writeFileSync(file, JSON.stringify({ mcpServers: { genoffice: { command: 'npx' } } }))
+    writeFileSync(file, JSON.stringify({ mcpServers: { alternateoffice: { command: 'npx' } } }))
     const r = await run(['mcp', 'uninstall', 'gemini', '--json'], { env: m.env })
     expect(r.code).toBe(2)
     expect(r.json().detail.status).toBe('occupied')
@@ -424,7 +424,7 @@ describe('genoffice mcp uninstall', () => {
   })
 })
 
-describe('genoffice mcp argument parsing', () => {
+describe('alternateoffice mcp argument parsing', () => {
   it('keeps serving flags and subcommands apart', async () => {
     const m = fakeMachine([])
     const mixed = await run(['mcp', 'install', 'all', '--http', '3000', '--json'], { env: m.env })
