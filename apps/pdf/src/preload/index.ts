@@ -107,7 +107,7 @@ const api: PdfApi = {
 }
 
 // Shared project chat store (registered app-wide by the shell's main init):
-// AI PDF conversations persist per file, like Docs/Sheets
+// PDF conversations persist per file, like Docs/Sheets
 const projectApi = {
   resolveChat: (args: { filePath: string | null; tempChatId?: string }) =>
     ipcRenderer.invoke('project:resolveChat', args),

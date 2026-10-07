@@ -45,8 +45,8 @@ All pure TypeScript, no Electron dependency, unit-tested (except the UI kit):
   the app's own Chromium, reduced in-browser to a document intent tree, and
   written as native OOXML with the `docx` library; only visuals with no Word
   counterpart are screenshotted. Drives the HTML app's Export as Word.
-- `packages/file-parse` — text extraction for AI attachments (office formats,
-  text formats).
+- `packages/file-parse` — local text extraction for Office formats, PDF, and
+  plain text; used by inspection and indexing paths.
 - `packages/agent-core` — the AI agent loop and skill composition shared by
   every app.
 - `packages/ai-provider` — provider abstraction and streaming for the model

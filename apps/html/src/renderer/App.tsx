@@ -7,7 +7,6 @@ import {
   useAutoSavePref,
   type FindPanelStrings,
   type FindTarget,
-  aiPanelInitiallyOpen,
   rememberAiPanelOpen,
 } from '@genoffice/ui'
 import {
@@ -22,7 +21,7 @@ import { instrumentForPreview } from './preview/instrument'
 import type { ComputedSnapshot, ElementRect, FromInspector } from './preview/inspector-protocol'
 import inspectorSource from './preview/inspector.js?raw'
 import { AiPanel, GensparkMark, type AiPreset, type HtmlAiDeps } from './ai/AiPanel'
-import { AiAskPopover, type AnchorRect, type AskMode } from './components/AiAskPopover'
+import { type AnchorRect, type AskMode } from './components/AiAskPopover'
 import {
   EDIT_QUEUE_MAX,
   buildSelectionInstruction,
@@ -138,7 +137,7 @@ export default function App() {
   const [previewNonce, setPreviewNonce] = useState(0)
   const [draftHtml, setDraftHtml] = useState<string | null>(null)
   const [historyState, setHistoryState] = useState({ undo: false, redo: false })
-  const [aiOpen, setAiOpen] = useState(() => aiPanelInitiallyOpen('htmlapp.showAi'))
+  const [aiOpen, setAiOpen] = useState(false)
   const [aiPreset, setAiPreset] = useState<AiPreset | null>(null)
   const [editQueue, setEditQueue] = useState<EditQueueItem[]>([])
   const [askMode, setAskMode] = useState<AskMode | null>(null)
@@ -1721,26 +1720,6 @@ export default function App() {
           </footer>
         </div>
       </div>
-      {askTarget && askMode && canvasMode !== 'present' && (
-        <AiAskPopover
-          key={askMode.kind === 'edit' ? askMode.qid : 'new'}
-          target={askTarget}
-          mode={askMode}
-          initialText={
-            askMode.kind === 'edit'
-              ? editQueue.find((q) => q.qid === askMode.qid)?.instruction
-              : undefined
-          }
-          getAnchorRect={getAskAnchorRect}
-          onSubmit={(instruction) =>
-            askMode.kind === 'edit' ? queueUpdate(askMode.qid, instruction) : queueAdd(instruction)
-          }
-          onCancel={() => setAskMode(null)}
-          onSendNow={askSendNow}
-          onRemove={() => askMode.kind === 'edit' && queueRemove(askMode.qid)}
-          queueFull={editQueue.length >= EDIT_QUEUE_MAX}
-        />
-      )}
       {pictureDialog?.kind === 'cutout' && (
         <CutoutDialog
           labels={imageDialogLabels}

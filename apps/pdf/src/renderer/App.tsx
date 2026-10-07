@@ -7,7 +7,7 @@ import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist/legacy/build/pdf.mj
 import type { PDFDocumentProxy } from 'pdfjs-dist'
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url'
 import { AiPanel, GensparkMark } from './ai/AiPanel'
-import { AiAskPopover, type AskAnchorRect } from './AiAskPopover'
+import { type AskAnchorRect } from './AiAskPopover'
 import {
   createSavedAnnotCountsLoader,
   loadSavedAnnots,
@@ -115,7 +115,6 @@ import type { CharStyle } from './color-runs'
 import { platformShortcuts } from '@genoffice/i18n'
 import {
   Dropdown,
-  aiPanelInitiallyOpen,
   rememberAiPanelOpen,
   useDismissablePopover,
   useRibbonCollapse,
@@ -352,9 +351,7 @@ export default function App() {
     window.addEventListener('pointerup', onUp)
   }
   // Persisted so a closed AI panel stays closed on next launch (docs/slides parity)
-  const [aiCollapsed, setAiCollapsed] = useState(
-    () => !aiPanelInitiallyOpen('genoffice-pdf-show-ai'),
-  )
+  const [aiCollapsed, setAiCollapsed] = useState(true)
   useEffect(() => {
     rememberAiPanelOpen('genoffice-pdf-show-ai', !aiCollapsed)
   }, [aiCollapsed])
@@ -8474,18 +8471,6 @@ export default function App() {
                   {t('aiAskBtn')}
                 </button>
               </div>
-            )}
-            {askPop && (
-              <AiAskPopover
-                rect={askPop.rect}
-                excerpt={askPop.excerpt}
-                readOnly={readOnly}
-                onSend={(text) => {
-                  setAskPop(null)
-                  runAiPreset(text)
-                }}
-                onClose={() => setAskPop(null)}
-              />
             )}
             {selected && (
               <div

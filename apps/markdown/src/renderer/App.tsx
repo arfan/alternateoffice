@@ -5,12 +5,7 @@ import {
   type MarkdownSourceSnapshot,
 } from './markdown/roundtripSerializer'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import {
-  ImageViewer,
-  aiPanelInitiallyOpen,
-  rememberAiPanelOpen,
-  useAutoSavePref,
-} from '@genoffice/ui'
+import { ImageViewer, rememberAiPanelOpen, useAutoSavePref } from '@genoffice/ui'
 import {
   pollUntilReady,
   runHeadlessRendererExport,
@@ -49,7 +44,6 @@ import { ToastHost } from './components/toast'
 import { showToast } from './components/toast-bus'
 import { TableMenu } from './components/TableMenu'
 import { FrontmatterPanel } from './components/FrontmatterPanel'
-import { AiAskPopover } from './components/AiAskPopover'
 import { AiPanel, GensparkMark, type AiPreset, type MarkdownAiDeps } from './ai/AiPanel'
 import { EDIT_QUEUE_MAX, selectionForAnchor, type EditQueueItem } from './ai/edit-queue'
 import { addQueueAnchor, clearQueueAnchors, removeQueueAnchors } from './editor/aiQueueAnchors'
@@ -151,7 +145,7 @@ export default function App() {
   const [fmOpen, setFmOpen] = useState(false)
   const [fmText, setFmText] = useState('')
   // Persisted so a closed AI panel stays closed on next launch (docs/slides parity)
-  const [aiOpen, setAiOpen] = useState(() => aiPanelInitiallyOpen('mdapp.showAi'))
+  const [aiOpen, setAiOpen] = useState(false)
   const [aiPreset, setAiPreset] = useState<AiPreset | null>(null)
   const [editQueue, setEditQueue] = useState<EditQueueItem[]>([])
   const editQueueRef = useRef(editQueue)
@@ -1195,17 +1189,6 @@ export default function App() {
         />
       )}
       {!sourceMode && <TableMenu editor={editor} scrollRef={scrollRef} zoom={zoom} />}
-      {editor && !sourceMode && status === 'ready' && (
-        <AiAskPopover
-          editor={editor}
-          queueFull={editQueue.length >= EDIT_QUEUE_MAX}
-          getItem={getQueueItem}
-          onSendNow={askSendNow}
-          onQueueAdd={queueAdd}
-          onQueueUpdate={queueUpdate}
-          onQueueRemove={queueRemove}
-        />
-      )}
     </div>
   )
 }

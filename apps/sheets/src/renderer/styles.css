@@ -1563,7 +1563,7 @@ button.check-item:hover {
  * its column is drag-resizable: driven by --copilot-width (updated by the AiChatPanel resizer) */
 .sheet-body {
   display: grid;
-  grid-template-columns: var(--copilot-width, 360px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   min-height: 0;
   transition: grid-template-columns 180ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1791,7 +1791,7 @@ button.check-item:hover {
 }
 
 .app-shell.copilot-collapsed .sheet-body {
-  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .sheet-main {
@@ -1942,6 +1942,13 @@ button.check-item:hover {
   box-shadow: var(--sheets-shadow-copilot);
   font-family: var(--gs-font-sans);
   color: var(--color-text-primary);
+}
+
+/* AI chat is removed from the local-first editor. */
+.copilot,
+.ai-entry,
+.expand-copilot {
+  display: none !important;
 }
 
 /* Collapsed rail: identical to the slides .ai-rail — plain white strip,

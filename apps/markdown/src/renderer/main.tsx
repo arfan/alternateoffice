@@ -9,12 +9,11 @@ import '@genoffice/ui/dropdown.css'
 import '@genoffice/ui/find-panel.css'
 import '@genoffice/ui/ribbon-collapse.css'
 import '@genoffice/ui/markdown.css'
-import '@genoffice/ui/ai-panel-prefs.css'
 import '@genoffice/ui/ai-scope-quote.css'
 import '@genoffice/ui/image-viewer.css'
 import 'katex/dist/katex.min.css'
 import './styles.css'
-import { applyAiPanelPrefs, installScreenTips } from '@genoffice/ui'
+import { installScreenTips } from '@genoffice/ui'
 
 installScreenTips()
 
@@ -41,11 +40,6 @@ void (async () => {
   applyDocumentTheme(docTheme ?? 'follow')
   window.markdownApi.onThemeChanged(applyTheme)
   window.markdownApi.onDocumentThemeChanged?.(applyDocumentTheme)
-  await window.markdownApi
-    ?.getAiPanelPrefs?.()
-    .then(applyAiPanelPrefs)
-    .catch(() => {})
-  window.markdownApi?.onAiPanelPrefsChanged?.(applyAiPanelPrefs)
   createRoot(document.getElementById('root')!).render(
     <LocaleProvider initial={lang}>
       <App />

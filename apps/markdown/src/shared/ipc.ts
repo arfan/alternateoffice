@@ -125,7 +125,7 @@ export interface ExportDocxRequest {
   base64: string
   /** file name (no extension) suggested in the dialog / used for the silent convert */
   suggestedName: string
-  /** 'dialog' = save dialog; 'openInDocs' = app-managed temporary copy opened in AI Docs */
+  /** 'dialog' = save dialog; 'openInDocs' = app-managed temporary copy opened in Docs */
   mode: 'dialog' | 'openInDocs'
 }
 

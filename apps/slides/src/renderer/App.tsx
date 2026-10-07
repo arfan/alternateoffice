@@ -73,12 +73,7 @@ import { formatClock, type CustomShow } from './slideshow-utils'
 import { ContextMenu } from './components/ContextMenu'
 import { ShapeGalleryPopover } from './components/ShapeGalleryPopover'
 import { PasteOptionsFloater } from './components/PasteOptionsFloater'
-import {
-  AiAskPopover,
-  AiAskTrigger,
-  type AnchorRect,
-  type AskTarget,
-} from './components/AiAskPopover'
+import { AiAskTrigger, type AnchorRect, type AskTarget } from './components/AiAskPopover'
 import {
   anchorId,
   buildSelectionInstruction,
@@ -101,7 +96,6 @@ import {
   useAutoSavePref,
   type AiScopeQuoteData,
   type WordArtPreset,
-  aiPanelInitiallyOpen,
   rememberAiPanelOpen,
 } from '@genoffice/ui'
 import type { ChartPresetDef, IconDef, SmartArtDef } from './insert-presets'
@@ -463,7 +457,7 @@ export function App() {
   useEffect(() => {
     window.slidesApi.setAutoSavePref?.(autoSave)
   }, [autoSave])
-  const [showAi, setShowAi] = useState(() => aiPanelInitiallyOpen('ai-slides-show-ai'))
+  const [showAi, setShowAi] = useState(false)
   const [showFormat, setShowFormat] = useState(false)
   const [showBgFormat, setShowBgFormat] = useState(false)
   const [aiSettings, setAiSettings] = useState<AiSettings | null>(null)
@@ -4503,41 +4497,6 @@ export function App() {
         selectedIds.length > 0 && (
           <AiAskTrigger getAnchorRect={getAskTriggerRect} onOpen={openAskPopover} />
         )}
-
-      {askState && askTargets.length > 0 && (
-        <AiAskPopover
-          targets={askTargets}
-          getAnchorRect={getAskAnchorRect}
-          queueFull={editQueue.length >= EDIT_QUEUE_MAX}
-          onSubmit={(instruction) => {
-            askClosedAtRef.current = Date.now()
-            commitAsk(instruction)
-          }}
-          onCancel={() => {
-            askClosedAtRef.current = Date.now()
-            setAskState(null)
-          }}
-          onSendNow={
-            askState.itemKey
-              ? undefined
-              : (instruction) => {
-                  askClosedAtRef.current = Date.now()
-                  setAskState(null)
-                  // Carry the popover's frozen durable targets into the run.
-                  // The canvas keeps parse-time source ids for rendering, while
-                  // the AI inventory and edit tools speak durable ids.
-                  pushAiPreset(
-                    buildSelectionInstruction(current, askTargets, instruction),
-                    true,
-                    instruction,
-                    undefined,
-                    undefined,
-                    askScopeQuote(),
-                  )
-                }
-          }
-        />
-      )}
 
       {ctxMenu && (
         <ContextMenu

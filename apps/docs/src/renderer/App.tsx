@@ -19,7 +19,6 @@ import { NodeSelection, TextSelection, type Command, type Transaction } from '@t
 import {
   Dropdown,
   ImageViewer,
-  aiPanelInitiallyOpen,
   rememberAiPanelOpen,
   createZoomWheelClassifier,
   useAutoSavePref,
@@ -110,7 +109,6 @@ import { hfCommitTarget, hfLinked, resolveHf, withHfLink, type HfSectionState } 
 import { hfLayoutResolved, hfPhantomSpec, hfWithPhantom } from './hf-phantom'
 import { textColorValue } from './editor/text-color'
 import { textOutlineCssValue } from './editor/text-outline'
-import { AiAskPopover } from './components/AiAskPopover'
 import { EDIT_QUEUE_MAX, selectionForAnchor, type DocsEditQueueItem } from './ai/edit-queue'
 import { addQueueAnchor, clearQueueAnchors, removeQueueAnchors } from './editor/ai-queue-anchors'
 import {
@@ -776,7 +774,7 @@ export function App() {
   } | null>(null)
   const [_recent, setRecent] = useState<string[]>([])
   const [settings, setSettings] = useState<AiSettings>(DEFAULT_SETTINGS)
-  const [showAi, setShowAi] = useState(() => aiPanelInitiallyOpen('aidocs.showAi'))
+  const [showAi, setShowAi] = useState(false)
   const [spellcheck, setSpellcheck] = useState(spellcheckEnabled)
   const [largeDocSpellOff, setLargeDocSpellOff] = useState(false)
   const spellcheckActive = spellcheck && !largeDocSpellOff
@@ -6981,17 +6979,6 @@ export function App() {
                 zoom={zoom / 100}
                 pageInfo={pageInfo}
                 onClose={closeNav}
-              />
-            )}
-            {doc && (
-              <AiAskPopover
-                editor={editor}
-                queueFull={editQueue.length >= EDIT_QUEUE_MAX}
-                getItem={getQueueItem}
-                onSendNow={askSendNow}
-                onQueueAdd={queueAdd}
-                onQueueUpdate={queueUpdate}
-                onQueueRemove={queueRemove}
               />
             )}
             {doc && <PasteOptionsChip editor={editor} />}

@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
-  "description": "shared attachment parsing: PDF, Office and plain-text formats to text; images flagged for multimodal input",
+  "description": "shared local parsing: PDF, Office and plain-text formats to text for inspection and indexing",
   "exports": {
     ".": "./src/index.ts"
   },
