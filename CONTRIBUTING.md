@@ -133,16 +133,19 @@ repository:
 BUILD_DIR=/tmp/alternateoffice-release npm run dist:mac
 ```
 
-`dist:win` additionally expects the xlsx sidecar at the MinGW cross-compilation
-path. Building on Windows leaves it under the MSVC target instead, so stage it
-first:
+On Windows with Rust and Visual Studio C++ tools installed, build with the
+native MSVC target from PowerShell at the repository root:
 
-```bash
-cargo build --release --target x86_64-pc-windows-gnu   # from apps/sheets/native/xlsx-engine
+```powershell
+$env:PATH = "$env:USERPROFILE\.cargo\bin;" + $env:PATH
+$env:CARGO_BUILD_TARGET = 'x86_64-pc-windows-msvc'
+$env:ALTERNATEOFFICE_WIN_SIDECAR_TARGET = 'x86_64-pc-windows-msvc'
+npm run dist:win
 ```
 
-or copy an existing `target/release/xlsx-sidecar.exe` to
-`target/x86_64-pc-windows-gnu/release/`.
+The installer is written to `apps/shell/release`. The MSVC configuration statically
+links the C runtime. GNU cross-builds remain supported: without the sidecar override,
+packaging expects `target/x86_64-pc-windows-gnu/release/xlsx-sidecar.exe`.
 
 ## Environment variables
 

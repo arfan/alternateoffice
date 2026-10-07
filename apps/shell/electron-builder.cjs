@@ -74,7 +74,16 @@ if (winArm64 && !process.env.ELECTRON_BUILDER_7Z_FILTER) {
   process.env.ELECTRON_BUILDER_7Z_FILTER = 'BCJ'
 }
 const winArch = winArm64 ? 'arm64' : 'x64'
-const winSidecarTarget = winArm64 ? 'aarch64-pc-windows-msvc' : 'x86_64-pc-windows-gnu'
+// Native Windows builds can use MSVC; keep the GNU default for existing cross-builds.
+const winSidecarTarget =
+  process.env.ALTERNATEOFFICE_WIN_SIDECAR_TARGET ||
+  (winArm64 ? 'aarch64-pc-windows-msvc' : 'x86_64-pc-windows-gnu')
+const allowedWinSidecarTargets = winArm64
+  ? ['aarch64-pc-windows-msvc']
+  : ['x86_64-pc-windows-gnu', 'x86_64-pc-windows-msvc']
+if (!allowedWinSidecarTargets.includes(winSidecarTarget)) {
+  throw new Error(`Invalid Windows sidecar target for ${winArch}: ${winSidecarTarget}`)
+}
 const WIN_SIDECAR = `../sheets/native/xlsx-engine/target/${winSidecarTarget}/release/xlsx-sidecar.exe`
 
 function assertExtraResourceSources() {
@@ -685,7 +694,9 @@ const config = {
 const winSignMode = process.env.ALTERNATEOFFICE_WIN_SIGN_MODE
 if (winSignMode) {
   if (winSignMode !== 'test' && winSignMode !== 'production') {
-    throw new Error(`ALTERNATEOFFICE_WIN_SIGN_MODE must be "test" or "production", got "${winSignMode}"`)
+    throw new Error(
+      `ALTERNATEOFFICE_WIN_SIGN_MODE must be "test" or "production", got "${winSignMode}"`,
+    )
   }
   config.win.signtoolOptions = {
     // Single pass per file: the sha1+sha256 dual-signing default is a
