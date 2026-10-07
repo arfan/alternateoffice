@@ -73,12 +73,7 @@ import { formatClock, type CustomShow } from './slideshow-utils'
 import { ContextMenu } from './components/ContextMenu'
 import { ShapeGalleryPopover } from './components/ShapeGalleryPopover'
 import { PasteOptionsFloater } from './components/PasteOptionsFloater'
-import { AiAskTrigger, type AnchorRect, type AskTarget } from './components/AiAskPopover'
 import {
-  anchorId,
-  buildSelectionInstruction,
-  describeNode,
-  EDIT_QUEUE_MAX,
   resolveQueueItem,
   type EditQueueItem,
 } from './ai/edit-queue'
@@ -843,7 +838,6 @@ export function App() {
       setAiPanelKey((k) => k + 1)
       // Queue anchors belong to the deck that was open; another file invalidates them all
       setEditQueue([])
-      setAskState(null)
       needsFitRef.current = true
       setStatus(
         result.path
@@ -901,8 +895,6 @@ export function App() {
   // Save/export flows live in file-actions.ts; the editing-active flag lets ⌘S wait for the edit overlay to commit
   const editingActiveRef = useRef(false)
   editingActiveRef.current = !!editing || !!editingCell
-  /** Set while the AI annotation popover is open (assigned below, next to askState) */
-  const askOpenRef = useRef(false)
 
   const save = useCallback(
     (quiet = false): Promise<boolean> => fileActions.save(() => ctxRef.current, quiet),
@@ -1184,7 +1176,7 @@ export function App() {
       // must not depend on an unmount blur (same guard as autosave/⌘S).
       // The ask popover needs it too: it is anchored to an element on this page,
       // so a flip would tear it down before it can commit what was typed.
-      if (editingActiveRef.current || askOpenRef.current) return
+      if (editingActiveRef.current) return
       const fits = zoomLiveRef.current <= rawFitRef.current(slideLiveRef.current) + 0.001
       if (!fits) return
       const flip = pager.feed(ev.deltaY, ev.timeStamp)
@@ -1284,137 +1276,6 @@ export function App() {
       })
     },
     [],
-  )
-
-  // ── AI element edit queue ──────────────────────────────────────────────
-  // Session-only: annotations are a scratchpad for the next AI submission, not
-  // document content, so nothing here is persisted with the file.
-
-  /** Open annotation popover; ids are the canvas selection it was opened on */
-  const [askState, setAskState] = useState<{ ids: string[]; itemKey?: string } | null>(null)
-  askOpenRef.current = askState !== null
-  /** When the popover last dismissed itself — see the guard in openAskPopover */
-  const askClosedAtRef = useRef(0)
-
-  // A deliberate page change (thumbnail, outline, queue row) leaves the popover
-  // anchored to elements that are no longer rendered, which would unmount it
-  // without committing; drop it rather than strand askState
-  useEffect(() => {
-    setAskState(null)
-  }, [current])
-
-  const askTargets = useMemo((): AskTarget[] => {
-    if (!askState) return []
-    return askState.ids.flatMap((id) => {
-      const node = findNodeCtx(id)?.node
-      return node ? [{ id: anchorId(node), sourceId: node.sourceId, desc: describeNode(node) }] : []
-    })
-  }, [askState, findNodeCtx])
-  /** what a Send-now bubble quotes: the page, the element count and their leading text */
-  const askScopeQuote = (): AiScopeQuoteData => {
-    const text = askTargets
-      .map((target) => target.desc.text?.trim() ?? '')
-      .filter(Boolean)
-      .join(' / ')
-    return {
-      label: `${t('aiScopeSlide', { n: current + 1 })} · ${t('aiScopeSelection', { count: askTargets.length })}`,
-      ...(text ? { text } : {}),
-    }
-  }
-
-  /** Viewport rect of a set of element ids; re-measured while the canvas scrolls or zooms */
-  const selectionRect = useCallback(
-    (ids: string[]): AnchorRect | null => {
-      const rel = stageRelRef.current
-      const slide = slides[current]
-      if (!rel || !slide) return null
-      const r = rel.getBoundingClientRect()
-      const scale = slide.widthPx > 0 ? r.width / slide.widthPx : 1
-      let minX = Infinity
-      let minY = Infinity
-      let maxX = -Infinity
-      let maxY = -Infinity
-      for (const id of ids) {
-        const ctx = findNodeCtx(id)
-        if (!ctx) continue
-        // Children of an entered group carry group-local coordinates
-        const parent = ctx.groupId ? findNodeCtx(ctx.groupId)?.node : null
-        const ox = parent?.box.x ?? 0
-        const oy = parent?.box.y ?? 0
-        const b = ctx.node.box
-        minX = Math.min(minX, ox + b.x)
-        minY = Math.min(minY, oy + b.y)
-        maxX = Math.max(maxX, ox + b.x + b.w)
-        maxY = Math.max(maxY, oy + b.y + b.h)
-      }
-      if (!Number.isFinite(minX)) return null
-      // Anchor to the visible part of the element and hand the canvas band along:
-      // a full-bleed picture would otherwise push the popover over the ribbon
-      const view = stageRelRef.current?.closest('.stage-wrap')?.getBoundingClientRect()
-      const rect = {
-        left: Math.max(r.left + minX * scale, view?.left ?? -Infinity),
-        top: Math.max(r.top + minY * scale, view?.top ?? -Infinity),
-        right: Math.min(r.left + maxX * scale, view?.right ?? Infinity),
-        bottom: Math.min(r.top + maxY * scale, view?.bottom ?? Infinity),
-        viewTop: view?.top ?? 0,
-        viewBottom: view?.bottom ?? window.innerHeight,
-      }
-      return rect.right <= rect.left || rect.bottom <= rect.top ? null : rect
-    },
-    [findNodeCtx, slides, current],
-  )
-
-  const getAskAnchorRect = useCallback(
-    (): AnchorRect | null => (askState ? selectionRect(askState.ids) : null),
-    [askState, selectionRect],
-  )
-
-  /** Anchor for the floating Ask AI chip that follows the live selection */
-  const getAskTriggerRect = useCallback(
-    (): AnchorRect | null => (selectedIds.length > 0 ? selectionRect(selectedIds) : null),
-    [selectedIds, selectionRect],
-  )
-
-  const openAskPopover = useCallback(() => {
-    if (editing || editingCell || selectedIds.length === 0) return
-    // Clicking the trigger while the popover is open dismisses it through
-    // the capture-phase outside-click handler before onClick runs.
-    if (Date.now() - askClosedAtRef.current < 250) return
-    // A full queue only disables "Add to queue" inside the popover; "Send now"
-    // never touches the queue, so the popover still opens
-    setAskState({ ids: selectedIds })
-  }, [editing, editingCell, selectedIds])
-
-  const commitAsk = useCallback(
-    (instruction: string) => {
-      const state = askState
-      setAskState(null)
-      if (!state) return
-      setEditQueue((prev) => {
-        if (state.itemKey) {
-          return prev.map((it) => (it.key === state.itemKey ? { ...it, instruction } : it))
-        }
-        if (prev.length >= EDIT_QUEUE_MAX || askTargets.length === 0) return prev
-        const item: EditQueueItem = {
-          key: globalThis.crypto.randomUUID(),
-          slideIndex: current,
-          targets: askTargets.map((tg) => ({
-            id: tg.id,
-            sourceId: tg.sourceId,
-            type: tg.desc.type,
-          })),
-          instruction,
-          status: 'pending',
-        }
-        return [...prev, item]
-      })
-      // The queue lives in the panel; annotating with it collapsed would look like nothing happened
-      setShowAi(() => {
-        rememberAiPanelOpen('ai-slides-show-ai', true)
-        return true
-      })
-    },
-    [askState, askTargets, current],
   )
 
   const focusQueueItem = useCallback(
@@ -3040,7 +2901,6 @@ export function App() {
     setChartDataDialogOpen,
     setFindOpen,
     setPrintDlgOpen,
-    openAskPopover,
     zoom,
     setZoom,
     masterItems,
@@ -4487,16 +4347,6 @@ export function App() {
           </div>
         </div>
       )}
-
-      {!askState &&
-        !editing &&
-        !editingCell &&
-        !cropTarget &&
-        !cutoutTarget &&
-        inkTool === 'select' &&
-        selectedIds.length > 0 && (
-          <AiAskTrigger getAnchorRect={getAskTriggerRect} onOpen={openAskPopover} />
-        )}
 
       {ctxMenu && (
         <ContextMenu

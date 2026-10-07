@@ -7,7 +7,6 @@ import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist/legacy/build/pdf.mj
 import type { PDFDocumentProxy } from 'pdfjs-dist'
 import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url'
 import { AiPanel, GensparkMark } from './ai/AiPanel'
-import { type AskAnchorRect } from './AiAskPopover'
 import {
   createSavedAnnotCountsLoader,
   loadSavedAnnots,
@@ -763,8 +762,6 @@ export default function App() {
     lastPage: number
     text: string
   } | null>(null)
-  /** Ask-AI popover opened from the markup bar; the anchor rect is captured at open */
-  const [askPop, setAskPop] = useState<{ rect: AskAnchorRect; excerpt: string } | null>(null)
   /** Whole-document saved-annotation counts per original page for the AI context.
       The scan starts on first AI use, not when the document opens. */
   const [aiAnnotCounts, setAiAnnotCounts] = useState<SavedAnnotCounts | null>(null)
@@ -1097,7 +1094,6 @@ export default function App() {
       if (renderedPages) await renderedPages
       if (!saved) {
         setAiSelection(null)
-        setAskPop(null)
         setMarkups([])
         setRedactions([])
         redactionApplyConfirmedRef.current = false
@@ -2223,8 +2219,8 @@ export default function App() {
           text: selText,
         })
       }
-      // Read-only documents still get the bar for its Ask-AI entry (Q&A works);
-      // the markup buttons themselves are hidden in that state
+      // Read-only documents still get the selection bar; the markup buttons
+      // themselves are hidden in that state.
       setSelPopup({
         x: Math.min(Math.max(box.left + box.width / 2, 70), window.innerWidth - 70),
         y: box.top >= 52 ? box.top - 44 : Math.min(box.bottom + 8, window.innerHeight - 44),
@@ -2297,25 +2293,6 @@ export default function App() {
             ],
       ),
     )
-  }
-
-  /** Ask-AI entry on the markup bar: capture the selection box as the popover
-      anchor now (the bar's mousedown preventDefault kept the selection alive up
-      to this click; the popover input will collapse it) */
-  const openAskPopover = () => {
-    const sel = window.getSelection()
-    const box =
-      sel && !sel.isCollapsed && sel.rangeCount > 0
-        ? sel.getRangeAt(0).getBoundingClientRect()
-        : null
-    const rect: AskAnchorRect | null = box
-      ? { left: box.left, top: box.top, right: box.right, bottom: box.bottom }
-      : selPopup
-        ? { left: selPopup.x, top: selPopup.y, right: selPopup.x, bottom: selPopup.y + 36 }
-        : null
-    if (!rect) return
-    setSelPopup(null)
-    setAskPop({ rect, excerpt: aiSelection?.text ?? sel?.toString() ?? '' })
   }
 
   /** Markup types the whole current selection already carries — shown as pressed
@@ -5814,8 +5791,7 @@ export default function App() {
       if (e.key === 'Escape') {
         // Modal dialogs own Escape; the states behind them must not react too
         if (signDlg || stampDlg || propsDlg) return
-        if (askPop) setAskPop(null)
-        else if (textDraft) setTextDraft(null)
+        if (textDraft) setTextDraft(null)
         else if (pendingTextInsert) setPendingTextInsert(null)
         else if (imagePick) setImagePick(null)
         else if (editTextMode) setEditTextMode(false)
@@ -7160,7 +7136,6 @@ export default function App() {
               onScroll={() => {
                 handleScroll()
                 setSelPopup(null)
-                setAskPop(null)
                 setSelected(null)
                 clearLineHover()
                 clearBlockHover()
@@ -8455,21 +8430,6 @@ export default function App() {
                     <span className="pdf-sel-popup-sep" aria-hidden />
                   </>
                 )}
-                <button
-                  type="button"
-                  className="pdf-sel-ask"
-                  data-tip={t('aiAskTitle')}
-                  aria-label={t('aiAskBtn')}
-                  onClick={openAskPopover}
-                >
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden>
-                    <path
-                      d="M12 3l1.7 4.6L18 9.3l-4.3 1.7L12 15.6l-1.7-4.6L6 9.3l4.3-1.7L12 3zM19 15l.85 2.3L22 18.15l-2.15.85L19 21.3l-.85-2.3-2.15-.85 2.15-.85L19 15z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  {t('aiAskBtn')}
-                </button>
               </div>
             )}
             {selected && (

@@ -3610,15 +3610,6 @@ button {
   background: var(--border);
 }
 
-.pdf-sel-popup button.pdf-sel-ask {
-  width: auto;
-  gap: 5px;
-  padding: 0 9px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-ai-action);
-}
-
 .ai-ask-pop {
   position: fixed;
   z-index: 60;

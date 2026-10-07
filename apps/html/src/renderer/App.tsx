@@ -3,7 +3,6 @@ import {
   Dropdown,
   FindPanel,
   type FindFocusRequest,
-  type AiScopeQuoteData,
   useAutoSavePref,
   type FindPanelStrings,
   type FindTarget,
@@ -21,11 +20,7 @@ import { instrumentForPreview } from './preview/instrument'
 import type { ComputedSnapshot, ElementRect, FromInspector } from './preview/inspector-protocol'
 import inspectorSource from './preview/inspector.js?raw'
 import { AiPanel, GensparkMark, type AiPreset, type HtmlAiDeps } from './ai/AiPanel'
-import { type AnchorRect, type AskMode } from './components/AiAskPopover'
 import {
-  EDIT_QUEUE_MAX,
-  buildSelectionInstruction,
-  excerptOf,
   resolveQueueItem,
   type EditQueueItem,
 } from './ai/edit-queue'
@@ -140,7 +135,6 @@ export default function App() {
   const [aiOpen, setAiOpen] = useState(false)
   const [aiPreset, setAiPreset] = useState<AiPreset | null>(null)
   const [editQueue, setEditQueue] = useState<EditQueueItem[]>([])
-  const [askMode, setAskMode] = useState<AskMode | null>(null)
   const [selectedSid, setSelectedSid] = useState<number | null>(null)
   const [selectedState, setSelectedState] = useState<NodeState>('static')
   const [textSel, setTextSel] = useState<TextSel | null>(null)
@@ -221,7 +215,6 @@ export default function App() {
   const selectedSidRef = useRef<number | null>(null)
   const editQueueRef = useRef<EditQueueItem[]>([])
   const canvasModeRef = useRef<CanvasMode>('edit')
-  const queueSeqRef = useRef(0)
   /** brief confirmed on the AI card; pinned into the head of the next generated document */
   const briefRef = useRef<Brief | null>(null)
   /** name taken from the first AI request of an untitled document: tab title now, file name at the first save */
@@ -601,7 +594,6 @@ export default function App() {
             .at(-1)
           if (!item) return
           selectSid(item.sid, { reveal: true })
-          setAskMode({ kind: 'edit', qid: item.qid })
           return
         }
         case 'gx:select': {
@@ -708,7 +700,6 @@ export default function App() {
             moveSelectedRef.current(msg.command === 'moveUp' ? -1 : 1)
           else if (msg.command === 'delete') runManual([{ op: 'remove', sid }], 'clear')
           else if (msg.command === 'escape') selectSid(null)
-          else if (msg.command === 'askAi') setAskMode({ kind: 'new' })
           else if (msg.command === 'bold') wrapSelectionRef.current('strong')
           else if (msg.command === 'italic') wrapSelectionRef.current('em')
           else if (msg.command === 'parent' && e.parentSid !== null) {
@@ -778,9 +769,6 @@ export default function App() {
       setTextSel(null)
   }
   wrapSelectionRef.current = wrapSelection
-  const askAi = () => {
-    if (selectedEntry) setAskMode({ kind: 'new' })
-  }
   const setAttr = (name: string, value: string | null) => {
     // may run from the panel's unmount after the element was deleted
     if (selectedEntry && getMap().bySid.has(selectedEntry.sid))
@@ -906,32 +894,10 @@ export default function App() {
     cropHint: t('imageCropHint'),
   }
 
-  // ── element-scoped AI edits: queue them on the selected element or run one right away ──
-  const askTarget = useMemo(() => {
-    if (!selectedEntry || STRUCTURAL.has(selectedEntry.tag)) return null
-    return {
-      sid: selectedEntry.sid,
-      tag: selectedEntry.tag,
-      excerpt: excerptOf(text, selectedEntry),
-      start: selectedEntry.range[0],
-    }
-  }, [selectedEntry, text])
-  const queueAdd = (instruction: string) => {
-    setAskMode(null)
-    if (!askTarget || editQueue.length >= EDIT_QUEUE_MAX) return
-    const qid = `q${++queueSeqRef.current}`
-    setEditQueue((prev) => [
-      ...prev,
-      { qid, sid: askTarget.sid, tag: askTarget.tag, capturedText: askTarget.excerpt, instruction },
-    ])
-    setAiOpen(true)
-  }
   const queueUpdate = (qid: string, instruction: string) => {
-    setAskMode(null)
     setEditQueue((prev) => prev.map((q) => (q.qid === qid ? { ...q, instruction } : q)))
   }
   const queueRemove = (qid: string) => {
-    setAskMode(null)
     setEditQueue((prev) => prev.filter((q) => q.qid !== qid))
   }
   const queueConsume = (qids: string[]) =>
@@ -941,38 +907,6 @@ export default function App() {
     const target = item && resolveQueueItem(text, getMap(), item).target
     if (target) selectSid(target.sid, { reveal: true })
   }
-  const askSendNow = (instruction: string) => {
-    setAskMode(null)
-    if (!askTarget) return
-    flushPending()
-    setAiOpen(true)
-    const scope: AiScopeQuoteData = {
-      label: t('aiScopeElement', { tag: askTarget.tag }),
-      ...(askTarget.excerpt.trim() ? { text: askTarget.excerpt.trim() } : {}),
-    }
-    setAiPreset({
-      text: buildSelectionInstruction(askTarget, instruction),
-      displayText: instruction,
-      nonce: Date.now(),
-      scope,
-    })
-  }
-  /** viewport rect of the selected element, clipped to the stage; identity changes whenever the geometry does */
-  const getAskAnchorRect = useCallback((): AnchorRect | null => {
-    // stageTick: the stage moved or resized (AI dock, split view, device recentre) without the frame-local rect changing
-    void stageTick
-    const stage = stageRef.current?.getBoundingClientRect()
-    const host = stageRef.current?.querySelector('.preview-host')?.getBoundingClientRect()
-    if (!selRect || !stage || !host) return null
-    const z = zoom / 100
-    const left = Math.max(stage.left, host.left + selRect.x * z)
-    const top = Math.max(stage.top, host.top + selRect.y * z)
-    const right = Math.min(stage.right, host.left + (selRect.x + selRect.width) * z)
-    const bottom = Math.min(stage.bottom, host.top + (selRect.y + selRect.height) * z)
-    if (right <= left || bottom <= top) return null
-    return { left, top, right, bottom, viewTop: stage.top, viewBottom: stage.bottom }
-  }, [selRect, zoom, stageTick])
-
   // ── live style editing: poke the preview DOM now, write one set_style op to the source shortly after ──
   const flushStyles = useCallback(() => {
     if (styleTimerRef.current !== null) window.clearTimeout(styleTimerRef.current)
@@ -1021,7 +955,6 @@ export default function App() {
         return mode
       })
       flushPending()
-      setAskMode(null)
     },
     [flushPending, selectSid],
   )
@@ -1601,8 +1534,6 @@ export default function App() {
                       onReplaceImage={replaceImage}
                       onCropImage={() => void openPictureDialog('crop')}
                       onCutoutImage={() => void openPictureDialog('cutout')}
-                      canAskAi={askTarget !== null}
-                      onAskAi={askAi}
                       tag={selectedEntry.tag}
                       onMove={moveSelected}
                       onDuplicate={duplicateSelected}

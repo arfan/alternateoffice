@@ -57,7 +57,6 @@ import type { ChartSeriesVisualState } from '@alternateoffice/xlsx-gateway/domai
 import type { ChangePlan } from '@alternateoffice/xlsx-gateway/domain/workbook.types'
 import type { AttachmentMeta } from '../shared/desktop-api'
 import { AiChatPanel, type AiChatMessage } from './ai/AiChatPanel'
-import type { SelectionAskAnchor } from './ai/selection-ask'
 import {
   PivotDialog,
   type PivotEditSeed,
@@ -213,9 +212,6 @@ interface ExcelShellProps {
   readonly aiScopeColumns: readonly string[] | null
   /// The range above belongs to a run in flight and can no longer be dropped.
   readonly aiScopeLocked: boolean
-  /// Drag endpoint and viewport bounds used to place the localized trigger.
-  readonly aiSelectionAskAnchor: SelectionAskAnchor | null
-  readonly onAiSelectionAskDismiss: () => void
   readonly onAiScopeDismiss: () => void
   /// Citation link in an AI answer: jumps the grid to the cited cell/range.
   readonly onAiCitation: (href: string) => void
@@ -381,8 +377,6 @@ export function ExcelShell({
   aiScopeRange,
   aiScopeColumns,
   aiScopeLocked,
-  aiSelectionAskAnchor,
-  onAiSelectionAskDismiss,
   onAiScopeDismiss,
   onAiCitation,
   onCommand,

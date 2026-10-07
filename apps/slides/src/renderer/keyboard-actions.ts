@@ -152,13 +152,6 @@ export function handleGlobalKeydown(
     ctx.setFindOpen(true)
     return
   }
-  // ⌘K: annotate the selection with an AI edit
-  if (mod && !e.altKey && !e.shiftKey && (e.key === 'k' || e.key === 'K')) {
-    if (editing || inField || selectedIds.length === 0) return
-    e.preventDefault()
-    ctx.openAskPopover()
-    return
-  }
   // ⌘P print
   if (mod && !e.altKey && !e.shiftKey && (e.key === 'p' || e.key === 'P')) {
     if (editing || inField) return
