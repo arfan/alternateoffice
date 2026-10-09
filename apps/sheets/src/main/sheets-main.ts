@@ -85,6 +85,10 @@ import {
   sheetCsvToXlsxBuffer,
 } from '@alternateoffice/xlsx-gateway/gateway/csv-import'
 import {
+  htmlToXlsxBufferForOpen,
+  looksLikeHtmlSpreadsheet,
+} from '@alternateoffice/xlsx-gateway/gateway/html-import'
+import {
   ensureGenofficeLogin,
   gskApiKey,
   gskLoginInfo,
@@ -4427,6 +4431,7 @@ async function prepareWorkbookForOpen(
   const openPath = join(directory, `${stem}.xlsx`)
   let emptyCsv = false
   try {
+    const sourceBytes = extension === 'xls' ? await readFile(path) : undefined
     if (extension === 'csv' || extension === 'tsv') {
       const csvStat = await stat(path)
       if (csvStat.size > MAX_DELIMITED_IMPORT_BYTES) throw new Error(tm('errFileTooLarge'))
@@ -4443,6 +4448,11 @@ async function prepareWorkbookForOpen(
       )
       emptyCsv = converted.empty
       await writeFile(openPath, converted.buffer)
+    } else if (extension === 'xls' && sourceBytes && looksLikeHtmlSpreadsheet(sourceBytes)) {
+      // Excel accepts HTML tables saved with an .xls extension. The native
+      // legacy reader only accepts BIFF/OLE files, so convert this web-export
+      // compatibility format into the same temporary .xlsx used for real .xls.
+      await writeFile(openPath, await htmlToXlsxBufferForOpen(sourceBytes, 'Sheet1'))
     } else {
       await client.convertWorkbook({ path, targetPath: openPath })
     }
